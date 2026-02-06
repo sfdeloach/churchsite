@@ -1,0 +1,25 @@
+services:
+  nginx:
+    profiles:
+      - production
+
+  app:
+    build:
+      target: builder
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/build
+    command: air
+    env_file:
+      - .env
+
+  postgres:
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+
+  redis:
+    ports:
+      - "6379:6379"
