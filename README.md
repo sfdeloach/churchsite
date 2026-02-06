@@ -5,12 +5,12 @@ A modern, self-contained church website built with Go, HTMX, and PostgreSQL.
 ## Quick Start
 
 ```bash
-# Prerequisites: Docker, Go 1.22+, Make
+# Prerequisites: Docker, Go 1.25+, Make
 
 # Clone and setup
 git clone https://github.com/sfdeloach/churchsite.git
 cd churchsite
-cp .env.example .env.development
+cp .env.example .env
 
 # Start services
 make dev-up

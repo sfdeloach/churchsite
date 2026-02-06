@@ -47,7 +47,7 @@
 
 | Component  | Technology                          |
 | ---------- | ----------------------------------- |
-| Backend    | Go 1.22+ with Chi router            |
+| Backend    | Go 1.25+ with Chi router            |
 | Templates  | Templ (type-safe, compiled)         |
 | Frontend   | HTMX + Alpine.js                    |
 | CSS        | Vanilla CSS with design system      |
@@ -542,7 +542,7 @@ rate:api:{ip}       # API rate limiting
 
 | Resource           | Public | Member | Volunteer | Musician | Staff | Elder | Pastor | Admin |
 | ------------------ | ------ | ------ | --------- | -------- | ----- | ----- | ------ | ----- |
-| Public pages       | ✓      | ✓      | ✓         | ✓        | ✓     | ✓     | ✓      | ✓     |
+| Public pages       | ✓     | ✓      | ✓         | ✓        | ✓     | ✓     | ✓      | ✓     |
 | Member directory   | -      | ✓      | -         | -        | ✓     | ✓     | ✓      | ✓     |
 | Operating budget   | -      | ✓      | -         | -        | ✓     | ✓     | ✓      | ✓     |
 | Small groups list  | -      | ✓      | -         | -        | ✓     | ✓     | ✓      | ✓     |
@@ -575,7 +575,7 @@ r.Use(middleware.RequireAllRoles("volunteer", "musician"))
 ## Code Organization
 
 ```
-sachapel/
+churchsite/
 ├── cmd/
 │   ├── server/main.go           # Entry point
 │   └── seed/main.go             # Database seeding

@@ -51,8 +51,6 @@ This document covers deployment configuration, CI/CD pipelines, backup procedure
 ### compose.yml (Base)
 
 ```yaml
-version: "3.8"
-
 services:
   nginx:
     image: nginx:alpine
@@ -75,13 +73,19 @@ services:
       dockerfile: Dockerfile
     environment:
       - APP_ENV=${APP_ENV}
+      - APP_URL=${APP_URL}
+      - APP_PORT=${APP_PORT}
       - DATABASE_URL=${DATABASE_URL}
       - REDIS_URL=${REDIS_URL}
       - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRATION=${JWT_EXPIRATION}
       - SMTP_HOST=${SMTP_HOST}
       - SMTP_PORT=${SMTP_PORT}
       - SMTP_USER=${SMTP_USER}
       - SMTP_PASS=${SMTP_PASS}
+      - FROM_EMAIL=${FROM_EMAIL}
+      - FROM_NAME=${FROM_NAME}
+      - MAX_UPLOAD_SIZE=${MAX_UPLOAD_SIZE}
     volumes:
       - app_uploads:/app/storage
     depends_on:
@@ -121,8 +125,6 @@ volumes:
 ### compose.prod.yml
 
 ```yaml
-version: "3.8"
-
 services:
   app:
     build:
@@ -134,8 +136,6 @@ services:
 ### compose.staging.yml
 
 ```yaml
-version: "3.8"
-
 services:
   nginx:
     ports:
@@ -153,12 +153,13 @@ services:
 
 ```dockerfile
 # Build stage
-FROM golang:1.22-alpine AS builder
+FROM golang:1.25-alpine AS builder
 
 WORKDIR /build
 
 RUN apk add --no-cache git make
 RUN go install github.com/a-h/templ/cmd/templ@latest
+RUN go install github.com/air-verse/air@latest
 
 COPY go.mod go.sum ./
 RUN go mod download

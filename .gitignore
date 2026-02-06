@@ -1,2 +1,32 @@
+# Environment files
 .env
+.env.*
+!.env.example
 
+# Binary
+sachapel
+
+# Templ generated files
+*_templ.go
+
+# Air temp directory
+tmp/
+
+# Coverage
+coverage.txt
+coverage.out
+coverage.html
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Storage (uploads, bulletins, etc.)
+storage/
+
+# OS files
+.DS_Store
+Thumbs.db
