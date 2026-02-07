@@ -8,6 +8,7 @@ Saint Andrew's Chapel website — a self-contained church website built with Go/
 
 - For information on deployment, CI/CD, and operations, see @DEPLOYMENT.md
 - For architectural decisions and rationale, see @DECISIONS.md
+- For implementation progress and what to work on next, see @PROGRESS.md
 
 ## Development Commands
 

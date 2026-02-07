@@ -216,6 +216,24 @@ This document records major architectural decisions and their rationale. Referen
 
 ---
 
+## 13. Early CI/CD Setup
+
+**Decision:** Set up CI/CD pipelines before completing Phase 1 features
+
+**Why:**
+
+- Catches deployment issues (Docker build, migrations, nginx) early when they're cheap to fix
+- Every commit produces a visible, testable staging site
+- Avoids a large "make it deployable" effort after 13 steps of feature code
+- Health check endpoints already exist to verify deployments
+
+**Trade-offs:**
+
+- Requires VPS and DNS provisioning before feature work is complete
+- Small upfront infrastructure effort
+
+---
+
 ## Git Commit Convention Used
 
 ```
