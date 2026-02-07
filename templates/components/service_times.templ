@@ -1,0 +1,33 @@
+package components
+
+templ ServiceTimes(settings map[string]string) {
+	<section class="service-times">
+		<div class="container">
+			<h2 class="section-title">Service Times</h2>
+			<div class="service-grid">
+				<div class="service-card">
+					<h3 class="service-card__title">Sunday</h3>
+					<div class="service-card__item">
+						<span class="service-card__name">{ settings["sunday_school_name"] }</span>
+						<span class="service-card__time">{ settings["sunday_school_time"] }</span>
+					</div>
+					<div class="service-card__item">
+						<span class="service-card__name">{ settings["morning_service_name"] }</span>
+						<span class="service-card__time">{ settings["morning_service_time"] }</span>
+					</div>
+					<div class="service-card__item">
+						<span class="service-card__name">{ settings["evening_service_name"] }</span>
+						<span class="service-card__time">{ settings["evening_service_time"] }</span>
+					</div>
+				</div>
+				<div class="service-card">
+					<h3 class="service-card__title">Wednesday</h3>
+					<div class="service-card__item">
+						<span class="service-card__name">{ settings["wednesday_service_name"] }</span>
+						<span class="service-card__time">{ settings["wednesday_service_time"] }</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+}

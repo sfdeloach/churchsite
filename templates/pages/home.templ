@@ -1,0 +1,20 @@
+package pages
+
+import (
+	"github.com/sfdeloach/churchsite/internal/models"
+	"github.com/sfdeloach/churchsite/templates/components"
+	"github.com/sfdeloach/churchsite/templates/layouts"
+)
+
+templ Home(settings map[string]string, events []models.Event) {
+	@layouts.Base("Home", settings) {
+		<section class="hero">
+			<div class="container">
+				<h1 class="hero__title">{ settings["hero_title"] }</h1>
+				<p class="hero__subtitle">{ settings["hero_subtitle"] }</p>
+			</div>
+		</section>
+		@components.ServiceTimes(settings)
+		@components.EventGrid(events)
+	}
+}

@@ -1,0 +1,31 @@
+package components
+
+templ Nav(settings map[string]string) {
+	<header class="site-header">
+		<div class="container" x-data="{ open: false }">
+			<a href="/" class="site-logo">
+				{ settings["church_name"] }
+			</a>
+			<button
+				class="nav-toggle"
+				aria-label="Toggle navigation"
+				x-bind:aria-expanded="open"
+				x-on:click="open = !open"
+			>
+				<span class="nav-toggle__bar"></span>
+				<span class="nav-toggle__bar"></span>
+				<span class="nav-toggle__bar"></span>
+			</button>
+			<nav class="nav" x-bind:class="open && 'nav--open'">
+				<ul class="nav__list">
+					<li class="nav__item"><a href="/" class="nav__link">Home</a></li>
+					<li class="nav__item"><a href="/about" class="nav__link">About</a></li>
+					<li class="nav__item"><a href="/ministries" class="nav__link">Ministries</a></li>
+					<li class="nav__item"><a href="/calendar/events" class="nav__link">Events</a></li>
+					<li class="nav__item"><a href="/resources/bulletins" class="nav__link">Bulletins</a></li>
+					<li class="nav__item"><a href="/login" class="nav__link nav__link--cta">Login</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+}
