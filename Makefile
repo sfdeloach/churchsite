@@ -1,9 +1,12 @@
-.PHONY: generate dev-up dev-down dev-logs migrate-up migrate-down migrate-create seed test lint build watch clean help
+.PHONY: generate dev-up dev-up-detached dev-down dev-logs migrate-up migrate-down migrate-create seed test lint build watch clean help
 
 generate: ## Generate Templ templates
 	templ generate
 
-dev-up: ## Start Docker containers
+dev-up: ## Start Docker containers w/ logs
+	docker compose -f compose.yml -f compose.dev.yml up --build
+
+dev-up-detached: ## Start Docker containers detached from logs
 	docker compose -f compose.yml -f compose.dev.yml up -d --build
 
 dev-down: ## Stop containers

@@ -2,8 +2,8 @@ root = "."
 tmp_dir = "tmp"
 
 [build]
-  bin = "tmp/sachapel"
-  cmd = "templ generate && go build -o tmp/sachapel ./cmd/server"
+  entrypoint = "tmp/sachapel"
+  cmd = "templ generate && go build -buildvcs=false -o tmp/sachapel ./cmd/server"
   delay = 1000
   exclude_dir = ["tmp", "static", "node_modules"]
   exclude_regex = ["_templ\\.go$"]
