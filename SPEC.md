@@ -1,10 +1,11 @@
 # Saint Andrew's Chapel Website - Technical Specification
 
-**Version:** 2.0 (Development Reference)
-**Last Updated:** February 5, 2026
+**Version:** 2.1 (Development Reference)
+**Last Updated:** February 7, 2026
 
-> For architectural decisions and rationale, see [DECISIONS.md](DECISIONS.md)
-> For deployment, CI/CD, and operations, see [DEPLOYMENT.md](DEPLOYMENT.md)
+- For information on deployment, CI/CD, and operations, see @DEPLOYMENT.md
+- For architectural decisions and rationale, see @DECISIONS.md
+- For implementation progress and what to work on next, see @PROGRESS.md
 
 ---
 
