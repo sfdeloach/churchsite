@@ -49,7 +49,7 @@
 | ---------- | ----------------------------------- |
 | Backend    | Go 1.25+ with Chi router            |
 | Templates  | Templ (type-safe, compiled)         |
-| Frontend   | HTMX + Alpine.js                    |
+| Frontend   | HTMX (v2.0.8) + Alpine.js (v3.15.8) |
 | CSS        | Vanilla CSS with design system      |
 | Database   | PostgreSQL 17                       |
 | Cache      | Redis 7                             |
@@ -542,7 +542,7 @@ rate:api:{ip}       # API rate limiting
 
 | Resource           | Public | Member | Volunteer | Musician | Staff | Elder | Pastor | Admin |
 | ------------------ | ------ | ------ | --------- | -------- | ----- | ----- | ------ | ----- |
-| Public pages       | ✓     | ✓      | ✓         | ✓        | ✓     | ✓     | ✓      | ✓     |
+| Public pages       | ✓      | ✓      | ✓         | ✓        | ✓     | ✓     | ✓      | ✓     |
 | Member directory   | -      | ✓      | -         | -        | ✓     | ✓     | ✓      | ✓     |
 | Operating budget   | -      | ✓      | -         | -        | ✓     | ✓     | ✓      | ✓     |
 | Small groups list  | -      | ✓      | -         | -        | ✓     | ✓     | ✓      | ✓     |
