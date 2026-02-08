@@ -221,7 +221,8 @@ server {
 
 # HTTPS server
 server {
-    listen 443 ssl http2;
+    listen 443 ssl;
+    http2 on;
     server_name sachapel.com www.sachapel.com;
 
     ssl_certificate /etc/letsencrypt/live/sachapel.com/fullchain.pem;
@@ -645,9 +646,9 @@ A temporary preview environment for stakeholder review while the permanent produ
 ### Manual Deploy Workflow
 
 ```bash
-ssh ubuntu@<elastic-ip>
+ssh -i <pemfile/>ubuntu@<elastic-ip/>
 cd /opt/sachapel
-make preview-deploy
+sudo make preview-deploy
 ```
 
 ### Memory Budget (t3.micro — 1GB RAM + 2GB swap)
