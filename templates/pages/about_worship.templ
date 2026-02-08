@@ -1,0 +1,61 @@
+package pages
+
+import (
+	"github.com/sfdeloach/churchsite/templates/components"
+	"github.com/sfdeloach/churchsite/templates/layouts"
+)
+
+templ AboutWorship(settings map[string]string) {
+	@layouts.Base("Our Worship", settings) {
+		@components.PageHeader("Our Worship", "The theology and practice of Reformed worship")
+		<section class="about-content">
+			<div class="container">
+				<div class="content-section">
+					<h2>The Regulative Principle</h2>
+					<p>
+						At Saint Andrew&#39;s Chapel, our worship is guided by the Regulative
+						Principle of Worship: we believe that God has prescribed in His Word
+						how He is to be worshipped, and that we are not to add to or subtract
+						from what He has commanded. This means our worship is shaped by
+						Scripture, not by human tradition or personal preference.
+					</p>
+					<h2>Elements of Worship</h2>
+					<p>Our Lord&#39;s Day services include the elements that God has appointed for the worship of His people:</p>
+					<ul class="content-list">
+						<li>
+							<strong>The reading and preaching of God&#39;s Word</strong> - the central act of worship, as the risen Christ speaks to His people through the Scriptures
+						</li>
+						<li>
+							<strong>Prayer</strong> - including adoration, confession, thanksgiving, and supplication
+						</li>
+						<li>
+							<strong>The singing of psalms, hymns, and spiritual songs</strong> - as the congregation lifts its voice in praise to God
+						</li>
+						<li>
+							<strong>The administration of the sacraments</strong> - Baptism and the Lord&#39;s Supper, as visible signs of God&#39;s covenant promises
+						</li>
+						<li>
+							<strong>The collection of tithes and offerings</strong> - as an act of worship and gratitude to God
+						</li>
+					</ul>
+					<h2>Music in Worship</h2>
+					<p>
+						Our music ministry is committed to congregational singing that is rich
+						in theological content and accessible to all. We draw from the Psalter,
+						the great hymns of the Reformation and post-Reformation periods, and
+						carefully selected modern hymns that are faithful to Scripture. Our
+						worship is accompanied by organ and piano, supporting the congregation&#39;s
+						voice as the primary instrument of praise.
+					</p>
+					<h2>The Lord&#39;s Day</h2>
+					<p>
+						We hold the Lord&#39;s Day as a day set apart for the public and private
+						worship of God, works of mercy, and rest from worldly employments and
+						recreations. Our morning and evening services provide opportunities for
+						the congregation to gather, hear God&#39;s Word, and respond in faith.
+					</p>
+				</div>
+			</div>
+		</section>
+	}
+}

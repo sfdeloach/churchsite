@@ -1,0 +1,72 @@
+package pages
+
+import (
+	"github.com/sfdeloach/churchsite/templates/components"
+	"github.com/sfdeloach/churchsite/templates/layouts"
+)
+
+templ AboutBeliefs(settings map[string]string) {
+	@layouts.Base("What We Believe", settings) {
+		@components.PageHeader("What We Believe", "Our doctrine and confessional standards")
+		<section class="about-content">
+			<div class="container">
+				<div class="content-section">
+					<h2>Confessional Standards</h2>
+					<p>
+						Saint Andrew's Chapel holds to the historic Reformed faith as summarized
+						in the <em>Westminster Confession of Faith</em> and the
+						<em>Westminster Larger and Shorter Catechisms</em>. These documents,
+						rooted in the Protestant Reformation, faithfully express the system of
+						doctrine taught in Holy Scripture.
+					</p>
+					<h2>The Holy Scriptures</h2>
+					<p>
+						We believe the Bible, consisting of the sixty-six books of the Old
+						and New Testaments, is the Word of God, inspired by the Holy Spirit,
+						and is the only infallible rule of faith and practice. The Scriptures
+						are sufficient for teaching, reproof, correction, and training in
+						righteousness.
+					</p>
+					<h2>The Trinity</h2>
+					<p>
+						We believe in one God, eternally existing in three persons: Father,
+						Son, and Holy Spirit. Each person of the Trinity is fully God, equal
+						in power and glory, yet distinct in their roles in the work of creation,
+						redemption, and sanctification.
+					</p>
+					<h2>Creation and the Fall</h2>
+					<p>
+						We believe that God created all things good, and that man was made in
+						the image of God. Through the disobedience of our first parents, Adam
+						and Eve, sin entered the world. All of humanity is now born in a state
+						of sin and is unable to save itself apart from the grace of God.
+					</p>
+					<h2>Salvation by Grace</h2>
+					<p>
+						We believe that salvation is by grace alone, through faith alone, in
+						Christ alone. God, out of His mere good pleasure, from all eternity
+						elected a people for Himself. Christ, the eternal Son of God, became
+						man and offered Himself as a sacrifice for sin, satisfying the justice
+						of God and purchasing redemption for all whom the Father has given Him.
+					</p>
+					<h2>The Church and Sacraments</h2>
+					<p>
+						We believe the visible church is the kingdom of the Lord Jesus Christ,
+						consisting of all who profess the true religion together with their
+						children. The sacraments of Baptism and the Lord's Supper are holy
+						signs and seals of the covenant of grace, instituted by Christ for the
+						benefit of His people.
+					</p>
+					<h2>The Return of Christ</h2>
+					<p>
+						We believe in the visible, bodily return of the Lord Jesus Christ, the
+						resurrection of the dead, and the final judgment. All people will give
+						account to God, and those who are in Christ will enjoy eternal life in
+						His presence, while those who reject Him will face eternal separation
+						from God.
+					</p>
+				</div>
+			</div>
+		</section>
+	}
+}

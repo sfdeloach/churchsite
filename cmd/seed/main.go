@@ -74,7 +74,59 @@ func main() {
 		slog.Info("seeded event", "title", event.Title, "date", event.EventDate.Format("Jan 2, 2006 3:04 PM"))
 	}
 
-	slog.Info("seeding complete", "events", len(events))
+	// Seed staff members
+	staffMembers := []models.StaffMember{
+		{
+			Name:         "Rev. James McAllister",
+			Title:        "Senior Pastor",
+			Bio:          "Pastor McAllister has faithfully served Saint Andrew's Chapel since 2008. A graduate of Reformed Theological Seminary, he is passionate about expository preaching and shepherding the flock entrusted to his care. He and his wife Margaret have three children.",
+			Email:        "pastor@sachapel.com",
+			DisplayOrder: 1,
+			IsActive:     true,
+		},
+		{
+			Name:         "Rev. David Kim",
+			Title:        "Associate Pastor",
+			Bio:          "Pastor Kim joined the staff in 2015 after serving as a church planter in South Korea. He oversees adult education, small groups, and missions. He holds an M.Div. from Westminster Theological Seminary.",
+			Email:        "dkim@sachapel.com",
+			DisplayOrder: 2,
+			IsActive:     true,
+		},
+		{
+			Name:         "Sarah Mitchell",
+			Title:        "Director of Music",
+			Bio:          "Sarah has led our music ministry since 2012, bringing a deep love for traditional Reformed hymnody and psalmody. She holds a Master of Music from the University of Michigan and also directs the church choir.",
+			Email:        "music@sachapel.com",
+			DisplayOrder: 3,
+			IsActive:     true,
+		},
+		{
+			Name:         "Robert Chen",
+			Title:        "Youth Director",
+			Bio:          "Robert joined Saint Andrew's in 2019 to lead our youth ministry. He is committed to teaching young people the fundamentals of the Reformed faith. He graduated from Covenant College with a degree in Bible and Theology.",
+			Email:        "youth@sachapel.com",
+			DisplayOrder: 4,
+			IsActive:     true,
+		},
+		{
+			Name:         "Linda Patterson",
+			Title:        "Office Administrator",
+			Bio:          "Linda keeps everything running smoothly at Saint Andrew's. She manages church communications, coordinates facility use, and supports all ministry activities. She has been a faithful member of the congregation for over 20 years.",
+			Email:        "office@sachapel.com",
+			DisplayOrder: 5,
+			IsActive:     true,
+		},
+	}
+
+	for _, member := range staffMembers {
+		if err := db.Postgres.Create(&member).Error; err != nil {
+			slog.Error("failed to seed staff member", "name", member.Name, "error", err)
+			continue
+		}
+		slog.Info("seeded staff member", "name", member.Name, "title", member.Title)
+	}
+
+	slog.Info("seeding complete", "events", len(events), "staff_members", len(staffMembers))
 }
 
 func nextSunday(from time.Time) time.Time {

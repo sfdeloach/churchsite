@@ -1,0 +1,68 @@
+package pages
+
+import (
+	"github.com/sfdeloach/churchsite/templates/components"
+	"github.com/sfdeloach/churchsite/templates/layouts"
+)
+
+templ AboutBuilding(settings map[string]string) {
+	@layouts.Base("Our Building", settings) {
+		@components.PageHeader("Our Building", "Our place of worship")
+		<section class="about-content">
+			<div class="container">
+				<div class="content-section">
+					<h2>A Place Set Apart for Worship</h2>
+					<p>
+						The sanctuary of Saint Andrew's Chapel was designed to reflect the
+						beauty, simplicity, and reverence of Reformed worship. Completed in
+						1998, the building draws on classic ecclesiastical architecture while
+						remaining warm and welcoming to all who enter.
+					</p>
+					<h2>The Sanctuary</h2>
+					<p>
+						The central feature of the sanctuary is the pulpit, elevated and
+						positioned at the front to signify the primacy of the preached Word
+						in our worship. Below the pulpit stands the communion table, a reminder
+						of our fellowship in Christ and His sacrificial love for His people.
+						The baptismal font is located near the entrance, symbolizing the
+						doorway into the visible church through the sacrament of Baptism.
+					</p>
+					<p>
+						The sanctuary seats approximately 250 worshippers in traditional pews
+						of warm oak. Large windows line the side walls, allowing natural light
+						to fill the space and directing our eyes upward to the Creator. The
+						pipe organ, installed in 2002, provides accompaniment for our
+						congregational singing.
+					</p>
+					<h2>Fellowship Hall</h2>
+					<p>
+						Adjacent to the sanctuary, the fellowship hall serves as a gathering
+						place for meals, celebrations, and community events. With seating for
+						150 and a full kitchen, it hosts our weekly fellowship time after
+						morning worship, monthly potluck dinners, and various ministry
+						activities throughout the year.
+					</p>
+					<h2>Educational Wing</h2>
+					<p>
+						Added in 2005, the educational wing houses classrooms for Sunday school,
+						a library stocked with Reformed theological works, and meeting rooms for
+						small groups and committee gatherings. The youth room occupies the lower
+						level, providing a dedicated space for our youth ministry programs.
+					</p>
+					<h2>Grounds</h2>
+					<p>
+						The church grounds include a memorial garden, a playground for children,
+						and ample parking. The property is located on a quiet residential street,
+						offering a peaceful setting for worship and reflection.
+					</p>
+					<h2>Visiting Us</h2>
+					<p>
+						We welcome visitors to come and see our building and grounds. If you
+						would like to schedule a tour or learn more about our facilities,
+						please contact the church office.
+					</p>
+				</div>
+			</div>
+		</section>
+	}
+}

@@ -1,0 +1,66 @@
+package pages
+
+import (
+	"github.com/sfdeloach/churchsite/templates/components"
+	"github.com/sfdeloach/churchsite/templates/layouts"
+)
+
+templ AboutGospel(settings map[string]string) {
+	@layouts.Base("The Gospel", settings) {
+		@components.PageHeader("The Gospel", "The good news of Jesus Christ")
+		<section class="about-content">
+			<div class="container">
+				<div class="content-section">
+					<h2>What Is the Gospel?</h2>
+					<p>
+						The word "gospel" means "good news." It is the most important message
+						in all of human history — the announcement that God has acted to save
+						sinners through the life, death, and resurrection of His Son, Jesus
+						Christ.
+					</p>
+					<h2>The Problem: Sin</h2>
+					<p>
+						The Bible teaches that every person is born with a sinful nature,
+						inherited from our first parents, Adam and Eve. We have all fallen
+						short of God's perfect standard of righteousness. Our sin separates us
+						from a holy God and leaves us under His just condemnation. We cannot
+						save ourselves, no matter how hard we try, because the problem lies in
+						our very nature.
+					</p>
+					<h2>The Solution: Christ</h2>
+					<p>
+						But God, being rich in mercy, did not leave us in our sin. He sent His
+						only Son, Jesus Christ, to live the perfect life that we could never
+						live and to die the death that we deserved. On the cross, Jesus bore
+						the full weight of God's wrath against sin, satisfying divine justice
+						on behalf of all who would believe in Him. Three days later, He rose
+						from the dead, conquering sin, death, and the devil.
+					</p>
+					<h2>The Response: Faith and Repentance</h2>
+					<p>
+						God commands all people everywhere to repent of their sins and believe
+						in the Lord Jesus Christ. To repent means to turn away from sin and
+						turn toward God. To believe means to trust in Christ alone for salvation,
+						resting on His finished work rather than on our own efforts. This faith
+						is itself a gift of God's grace, worked in our hearts by the Holy Spirit.
+					</p>
+					<h2>The Promise: Eternal Life</h2>
+					<p>
+						All who trust in Christ are forgiven of their sins, adopted into God's
+						family, and given the gift of eternal life. They are united to Christ
+						by faith, indwelt by the Holy Spirit, and will be raised in glory on
+						the last day. This is not something we earn — it is the free gift of
+						God's grace.
+					</p>
+					<h2>Come and Hear</h2>
+					<p>
+						If you would like to learn more about the gospel or have questions about
+						the Christian faith, we warmly invite you to visit Saint Andrew's Chapel.
+						Our pastors would be glad to meet with you and open God's Word together.
+						You are always welcome.
+					</p>
+				</div>
+			</div>
+		</section>
+	}
+}

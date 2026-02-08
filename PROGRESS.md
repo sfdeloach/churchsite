@@ -71,11 +71,43 @@ Temporary preview environment for stakeholder review. See [DEPLOYMENT.md](DEPLOY
 - Fonts: self-hosted EB Garamond (serif) and Nunito (sans-serif) variable fonts instead of system font stacks
 - Footer copyright year: dynamic via Go `time.Now().Year()` instead of hardcoded
 
-### Step 2: About Section — NOT STARTED
+### Step 2: About Section — COMPLETE
+
+**Database:**
+- `staff_members` table (soft-delete) with `name`, `title`, `bio`, `email`, `phone`, `photo_url`, `display_order`, `is_active`, nullable `user_id` (FK deferred to Step 7)
+- Migrations: `20250101000004` (create table), `20250101000005` (seed 5 staff members)
+
+**Backend:**
+- Model: `StaffMember` (`internal/models/staff_member.go`) — soft-delete, embeds `gorm.Model`
+- Service: `StaffMemberService.GetActive()` (`internal/services/staff_member.go`)
+- Handler: `AboutHandler` (`internal/handlers/about.go`) — 6 page methods + `Index` redirect
+
+**Routes:**
+- `GET /about` → 301 redirect to `/about/history`
+- `GET /about/history` — church history page
+- `GET /about/beliefs` — doctrine and confessional standards
+- `GET /about/worship` — theology of worship, regulative principle
+- `GET /about/gospel` — the gospel explained for visitors
+- `GET /about/staff` — pastors and staff (data-driven from `staff_members` table)
+- `GET /about/building` — sanctuary, fellowship hall, grounds
+
+**Templates:**
+- Components: `page_header.templ` (reusable banner), `staff_card.templ` (photo placeholder + info)
+- Pages: 6 about page templates in `templates/pages/about_*.templ`
+- Nav updated: "About" link replaced with Alpine.js dropdown submenu (6 sub-links)
+
+**CSS:**
+- `layout.css` — nav dropdown styles (desktop absolute, mobile inline accordion)
+- `components.css` — page-header, about-content, content-section, staff-grid, staff-card styles
+- `print.css` — page-header hidden, staff-card print-friendly
+
+**Seed data** updated in `cmd/seed/main.go` to include 5 staff members
 
 ### Step 3: Ministry Pages — NOT STARTED
 
 ### Step 4: Events Calendar with CRUD — NOT STARTED
+
+**Testing prerequisite:** Step 4 will introduce the first handler tests. Consider setting up test helpers (test DB, fixtures) as part of this step.
 
 ### Step 5: Bulletins — NOT STARTED
 

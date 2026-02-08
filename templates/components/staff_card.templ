@@ -1,0 +1,36 @@
+package components
+
+import "github.com/sfdeloach/churchsite/internal/models"
+
+func firstInitial(name string) string {
+	if len(name) == 0 {
+		return ""
+	}
+	return string([]rune(name)[0])
+}
+
+templ StaffCard(member models.StaffMember) {
+	<div class="staff-card">
+		<div class="staff-card__photo">
+			if member.PhotoURL != "" {
+				<img src={ member.PhotoURL } alt={ member.Name } class="staff-card__image"/>
+			} else {
+				<div class="staff-card__placeholder">
+					<span>{ firstInitial(member.Name) }</span>
+				</div>
+			}
+		</div>
+		<div class="staff-card__info">
+			<h3 class="staff-card__name">{ member.Name }</h3>
+			<p class="staff-card__title">{ member.Title }</p>
+			if member.Bio != "" {
+				<p class="staff-card__bio">{ member.Bio }</p>
+			}
+			if member.Email != "" {
+				<p class="staff-card__email">
+					<a href={ templ.SafeURL("mailto:" + member.Email) }>{ member.Email }</a>
+				</p>
+			}
+		</div>
+	</div>
+}

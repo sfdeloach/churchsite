@@ -1,0 +1,12 @@
+package components
+
+templ PageHeader(title string, subtitle string) {
+	<section class="page-header">
+		<div class="container">
+			<h1 class="page-header__title">{ title }</h1>
+			if subtitle != "" {
+				<p class="page-header__subtitle">{ subtitle }</p>
+			}
+		</div>
+	</section>
+}

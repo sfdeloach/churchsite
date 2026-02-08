@@ -1,0 +1,61 @@
+package pages
+
+import (
+	"github.com/sfdeloach/churchsite/templates/components"
+	"github.com/sfdeloach/churchsite/templates/layouts"
+)
+
+templ AboutHistory(settings map[string]string) {
+	@layouts.Base("Our History", settings) {
+		@components.PageHeader("Who We Are", "History & Identity")
+		<section class="about-content">
+			<div class="container">
+				<div class="content-section">
+					<h2>Saint Andrew&rsquo;s Reformed Legacy</h2>
+					<p>
+						Saint Andrew&rsquo;s was founded in 1997 as an independent congregation in the Reformed tradition. In
+						2023, the congregation was received into the Presbyterian Church in America (PCA). In 2025, the
+						congregation voted to withdraw from the PCA, and as a result, Saint Andrew&rsquo;s is currently an
+						independent congregation in the Reformed tradition.
+					</p>
+					<p>
+						Dr. R.C. Sproul (1939&ndash;2017) served as the first minister of preaching and teaching at Saint
+						Andrew&rsquo;s Chapel. He will be remembered for the many ways he served the church in defending the
+						sufficiency of God&rsquo;s grace alone for our salvation as well as the trustworthiness of the Word of
+						God. He was a gifted communicator, and his ability to make complex topics easy to understand was evident
+						throughout his teaching and writing. Some of Dr. Sproul&rsquo;s most well-known books include: 
+						<em>The Holiness of God</em>, <em>Chosen by God</em>, and <em>What is Reformed Theology?</em> Dr. Sproul founded
+						Ligonier Ministries, a ministry to help Christians know what they believe, how to live it, and how to
+						share it. More information about the ministry and legacy of Dr. Sproul can be found
+						<a href="https://about.ligonier.org/who-we-are#history" target="_blank">here</a>.
+					</p>
+					<blockquote>
+						<p>
+							Saint Andrew&rsquo;s has been self-consciously designed to reflect and recapture historic and
+							classical worship. We see worship as an act of offering sacrifice and praise to God. This is our priority: to
+							worship God according to how He commands, not according to what may be popular in a particular
+							culture in a particular time. Central to our worship is the proclamation of the Word of God by way
+							of biblical exposition. Saint Andrews stands in the tradition of Reformation faith and practice.
+						</p>
+					</blockquote>
+					<p class="text-right">&mdash;R.C. Sproul, First Minister of Preaching and Teaching at Saint Andrew&rsquo;s Chapel</p>
+					<h2>The Significance of Saint Andrew</h2>
+					<blockquote>
+						<p>
+							This apostle and martyr was the brother of Saint Peter, and he preached the Gospel to many Asiatic
+							nations. Foxe&rsquo;s Book of Martyrs records that after Saint Andrew arrived at Edessa, the
+							country&rsquo;s governor threatened him for preaching against the local idols. Saint Andrew,
+							persisting in the propagation of his doctrines, was ordered to be crucified with two ends of the cross fixed
+							transversely in the ground (in the shape of an X). He boldly told his accusers that he would not
+							have preached the glory of the cross if he had feared to die on it. Later, when they came to crucify him,
+							he said that he coveted the cross and longed to embrace it. He was fastened to the cross with cords
+							instead of nails, so that his death might be more slow. He remained on the cross for two days, preaching the
+							greatest part of the time to the people, and expired on the 30th of November.
+						</p>
+					</blockquote>
+					<p class="text-right">&mdash;Adapted from Foxe&rsquo;s Book of Martyrs</p>
+				</div>
+			</div>
+		</section>
+	}
+}

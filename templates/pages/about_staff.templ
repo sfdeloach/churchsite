@@ -1,0 +1,22 @@
+package pages
+
+import (
+	"github.com/sfdeloach/churchsite/internal/models"
+	"github.com/sfdeloach/churchsite/templates/components"
+	"github.com/sfdeloach/churchsite/templates/layouts"
+)
+
+templ AboutStaff(settings map[string]string, members []models.StaffMember) {
+	@layouts.Base("Pastors & Staff", settings) {
+		@components.PageHeader("Pastors & Staff", "The people who serve our congregation")
+		<section class="about-content">
+			<div class="container">
+				<div class="staff-grid">
+					for _, member := range members {
+						@components.StaffCard(member)
+					}
+				</div>
+			</div>
+		</section>
+	}
+}

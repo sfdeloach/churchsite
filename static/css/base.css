@@ -1,131 +1,136 @@
 /* Fonts */
 
 @font-face {
-    font-family: "EB Garamond";
-    src: url("/static/fonts/EB_Garamond/EBGaramond-VariableFont_wght.ttf") format("truetype");
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
+  font-family: "EB Garamond";
+  src: url("/static/fonts/EB_Garamond/EBGaramond-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "EB Garamond";
-    src: url("/static/fonts/EB_Garamond/EBGaramond-Italic-VariableFont_wght.ttf") format("truetype");
-    font-weight: 100 900;
-    font-style: italic;
-    font-display: swap;
+  font-family: "EB Garamond";
+  src: url("/static/fonts/EB_Garamond/EBGaramond-Italic-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "Nunito";
-    src: url("/static/fonts/Nunito/Nunito-VariableFont_wght.ttf") format("truetype");
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Nunito";
+  src: url("/static/fonts/Nunito/Nunito-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "Nunito";
-    src: url("/static/fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf") format("truetype");
-    font-weight: 100 900;
-    font-style: italic;
-    font-display: swap;
+  font-family: "Nunito";
+  src: url("/static/fonts/Nunito/Nunito-Italic-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
 }
 
 /* Design System Variables & Reset */
 
 :root {
-    /* Colors */
-    --color-primary: #89191c;
-    --color-primary-light: #a82428;
-    --color-primary-dark: #6b1315;
-    --color-secondary: #b8860b;
-    --color-secondary-light: #d4a017;
-    --color-accent: #b8860b;
+  /* Colors */
+  --color-primary: #89191c;
+  --color-primary-light: #a82428;
+  --color-primary-dark: #6b1315;
+  --color-secondary: #b8860b;
+  --color-secondary-light: #d4a017;
+  --color-accent: #b8860b;
 
-    /* Neutrals (warm-tinted) */
-    --color-white: #ffffff;
-    --color-gray-50: #faf9f7;
-    --color-gray-100: #f3f1ee;
-    --color-gray-200: #e0ddd8;
-    --color-gray-300: #b8b4ad;
-    --color-gray-400: #8f8a82;
-    --color-gray-500: #716b63;
-    --color-gray-600: #55504a;
-    --color-gray-700: #3d3935;
-    --color-gray-800: #272420;
-    --color-gray-900: #151311;
-    --color-black: #000000;
+  /* Neutrals (warm-tinted) */
+  --color-white: #ffffff;
+  --color-gray-50: #faf9f7;
+  --color-gray-100: #f3f1ee;
+  --color-gray-200: #e0ddd8;
+  --color-gray-300: #b8b4ad;
+  --color-gray-400: #8f8a82;
+  --color-gray-500: #716b63;
+  --color-gray-600: #55504a;
+  --color-gray-700: #3d3935;
+  --color-gray-800: #272420;
+  --color-gray-900: #151311;
+  --color-black: #000000;
 
-    /* Semantic */
-    --color-success: #16a34a;
-    --color-warning: #ca8a04;
-    --color-error: #dc2626;
-    --color-info: #2563eb;
+  /* Semantic */
+  --color-success: #16a34a;
+  --color-warning: #ca8a04;
+  --color-error: #dc2626;
+  --color-info: #2563eb;
 
-    /* Typography */
-    --font-family: "EB Garamond", Georgia, "Times New Roman", serif;
-    --font-family-sans: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --font-size-xs: 0.75rem;
-    --font-size-sm: 0.875rem;
-    --font-size-base: 1rem;
-    --font-size-lg: 1.125rem;
-    --font-size-xl: 1.25rem;
-    --font-size-2xl: 1.5rem;
-    --font-size-3xl: 1.875rem;
-    --font-size-4xl: 2.25rem;
+  /* Typography */
+  --font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+  --font-family-sans:
+    "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
 
-    /* Spacing */
-    --space-xs: 0.25rem;
-    --space-sm: 0.5rem;
-    --space-md: 1rem;
-    --space-lg: 1.5rem;
-    --space-xl: 2rem;
-    --space-2xl: 3rem;
-    --space-3xl: 4rem;
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
 
-    /* Layout */
-    --container-max: 1200px;
-    --container-padding: 1rem;
+  /* Layout */
+  --container-max: 1200px;
+  --container-padding: 1rem;
 
-    /* Borders */
-    --radius-sm: 0.25rem;
-    --radius-md: 0.5rem;
-    --radius-lg: 0.75rem;
+  /* Borders */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
 
-    /* Shadows */
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 
-    /* Transitions */
-    --transition-fast: 150ms ease;
-    --transition-base: 250ms ease;
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
 }
 
 /* Reset */
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    line-height: 1.6;
-    -webkit-text-size-adjust: 100%;
-    scroll-behavior: smooth;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--font-family-sans);
-    font-size: var(--font-size-base);
-    color: var(--color-gray-800);
-    background-color: var(--color-white);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-gray-800);
+  background-color: var(--color-white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 img,
@@ -133,26 +138,26 @@ picture,
 video,
 canvas,
 svg {
-    display: block;
-    max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
 input,
 button,
 textarea,
 select {
-    font: inherit;
+  font: inherit;
 }
 
 a {
-    color: var(--color-primary);
-    text-decoration: none;
-    transition: color var(--transition-fast);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
 a:hover {
-    color: var(--color-primary-light);
-    text-decoration: underline;
+  color: var(--color-primary-light);
+  text-decoration: underline;
 }
 
 /* Typography */
@@ -162,32 +167,58 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: var(--font-family);
-    color: var(--color-gray-900);
-    line-height: 1.2;
-    margin-bottom: var(--space-sm);
+  font-family: var(--font-family);
+  color: var(--color-gray-900);
+  line-height: 1.2;
+  margin-bottom: var(--space-sm);
 }
 
-h1 { font-size: var(--font-size-4xl); }
-h2 { font-size: var(--font-size-3xl); }
-h3 { font-size: var(--font-size-2xl); }
-h4 { font-size: var(--font-size-xl); }
+h1 {
+  font-size: var(--font-size-4xl);
+}
+h2 {
+  font-size: var(--font-size-3xl);
+}
+h3 {
+  font-size: var(--font-size-2xl);
+}
+h4 {
+  font-size: var(--font-size-xl);
+}
 
 p {
-    margin-bottom: var(--space-md);
+  margin-bottom: var(--space-md);
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 p:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
+}
+
+blockquote {
+  padding-left: var(--space-lg);
+  border-left: 4px solid var(--color-gray-100);
+  font-style: italic;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+blockquote p::before {
+  content: "\201C";
+}
+
+blockquote p::after {
+  content: "\201D";
 }
 
 ul,
 ol {
-    list-style: none;
+  list-style: none;
 }
 
 .container {
-    max-width: var(--container-max);
-    margin-inline: auto;
-    padding-inline: var(--container-padding);
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
 }

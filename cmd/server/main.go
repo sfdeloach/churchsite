@@ -62,10 +62,12 @@ func main() {
 	// Initialize services
 	siteSettingsSvc := services.NewSiteSettingsService(db.Postgres)
 	eventSvc := services.NewEventService(db.Postgres)
+	staffMemberSvc := services.NewStaffMemberService(db.Postgres)
 
 	// Initialize handlers
 	healthHandler := handlers.NewHealthHandler(db)
 	homeHandler := handlers.NewHomeHandler(siteSettingsSvc, eventSvc)
+	aboutHandler := handlers.NewAboutHandler(siteSettingsSvc, staffMemberSvc)
 
 	// Build router
 	r := chi.NewRouter()
@@ -87,6 +89,13 @@ func main() {
 
 	// Pages
 	r.Get("/", homeHandler.Index)
+	r.Get("/about", aboutHandler.Index)
+	r.Get("/about/history", aboutHandler.History)
+	r.Get("/about/beliefs", aboutHandler.Beliefs)
+	r.Get("/about/worship", aboutHandler.Worship)
+	r.Get("/about/gospel", aboutHandler.Gospel)
+	r.Get("/about/staff", aboutHandler.Staff)
+	r.Get("/about/building", aboutHandler.Building)
 
 	// Start server
 	addr := fmt.Sprintf(":%s", cfg.AppPort)

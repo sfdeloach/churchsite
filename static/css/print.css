@@ -5,7 +5,8 @@
     .site-footer,
     .nav-toggle,
     .btn,
-    .hero {
+    .hero,
+    .page-header {
         display: none !important;
     }
 
@@ -28,6 +29,11 @@
     .event-card {
         break-inside: avoid;
         border: 1px solid #ccc;
+        box-shadow: none;
+    }
+
+    .staff-card {
+        break-inside: avoid;
         box-shadow: none;
     }
 }

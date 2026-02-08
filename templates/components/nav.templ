@@ -19,7 +19,27 @@ templ Nav(settings map[string]string) {
 			<nav class="nav" x-bind:class="open && 'nav--open'">
 				<ul class="nav__list">
 					<li class="nav__item"><a href="/" class="nav__link">Home</a></li>
-					<li class="nav__item"><a href="/about" class="nav__link">About</a></li>
+					<li class="nav__item nav__item--dropdown" x-data="{ dropdownOpen: false }" x-on:click.outside="dropdownOpen = false">
+						<button
+							class="nav__link nav__dropdown-toggle"
+							x-on:click="dropdownOpen = !dropdownOpen"
+							x-bind:aria-expanded="dropdownOpen"
+							aria-haspopup="true"
+						>
+							About
+							<svg class="nav__dropdown-arrow" x-bind:class="dropdownOpen && 'nav__dropdown-arrow--open'" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+								<path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"></path>
+							</svg>
+						</button>
+						<ul class="nav__dropdown" x-show="dropdownOpen" x-transition>
+							<li><a href="/about/history" class="nav__dropdown-link">History & Identity</a></li>
+							<li><a href="/about/beliefs" class="nav__dropdown-link">Beliefs</a></li>
+							<li><a href="/about/worship" class="nav__dropdown-link">Worship</a></li>
+							<li><a href="/about/gospel" class="nav__dropdown-link">The Gospel</a></li>
+							<li><a href="/about/staff" class="nav__dropdown-link">Pastors &amp; Staff</a></li>
+							<li><a href="/about/building" class="nav__dropdown-link">Our Building</a></li>
+						</ul>
+					</li>
 					<li class="nav__item"><a href="/ministries" class="nav__link">Ministries</a></li>
 					<li class="nav__item"><a href="/calendar/events" class="nav__link">Events</a></li>
 					<li class="nav__item"><a href="/resources/bulletins" class="nav__link">Bulletins</a></li>
