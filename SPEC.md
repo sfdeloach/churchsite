@@ -591,13 +591,14 @@ churchsite/
 ├── migrations/                  # SQL migration files
 ├── static/
 │   ├── css/                     # base, layout, components, utilities, print
+|   ├── fonts/
 │   ├── js/                      # htmx.min.js, alpine.min.js
 │   └── images/
 ├── templates/
-│   ├── layouts/                 # base.templ, member.templ
-│   ├── pages/                   # home.templ, about.templ, ...
 │   ├── components/              # nav, footer, button, card
 │   └── errors/                  # 404, 403, 500, maintenance
+│   ├── layouts/                 # base.templ, member.templ
+│   ├── pages/                   # home.templ, about.templ, ...
 ├── compose.yml                  # Base Docker Compose
 ├── compose.dev.yml
 ├── compose.staging.yml

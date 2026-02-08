@@ -1,4 +1,4 @@
-.PHONY: generate dev-up dev-up-detached dev-down dev-logs migrate-up migrate-down migrate-create seed test lint build watch clean help
+.PHONY: generate dev-up dev-up-detached dev-down dev-logs migrate-up migrate-down migrate-create seed test lint build watch clean preview-up preview-down preview-logs preview-deploy help
 
 generate: ## Generate Templ templates
 	templ generate
@@ -43,6 +43,18 @@ build: ## Build binary
 
 watch: ## Hot reload (templ + air)
 	air
+
+preview-up: ## Start preview/production stack
+	docker compose -f compose.yml -f compose.prod.yml up -d --build
+
+preview-down: ## Stop preview/production stack
+	docker compose -f compose.yml -f compose.prod.yml down
+
+preview-logs: ## Follow preview app logs
+	docker compose -f compose.yml -f compose.prod.yml logs -f app
+
+preview-deploy: ## Pull latest code and rebuild preview stack
+	git pull && docker compose -f compose.yml -f compose.prod.yml up -d --build && docker compose -f compose.yml -f compose.prod.yml exec app ./sachapel migrate up
 
 clean: ## Remove build artifacts
 	rm -f sachapel

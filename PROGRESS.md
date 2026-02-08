@@ -6,10 +6,21 @@ This document tracks implementation progress against the [SPEC.md](SPEC.md) feat
 
 ## Infrastructure
 
+### Preview Deployment (AWS EC2) — COMPLETE
+
+Temporary preview environment for stakeholder review. See [DEPLOYMENT.md](DEPLOYMENT.md) for setup instructions.
+
+- Nginx config: `nginx/nginx.conf`, `nginx/sites-enabled/default.conf`
+- Let's Encrypt bootstrap: `scripts/init-letsencrypt.sh`
+- Production compose override: `compose.prod.yml` (certbot, memory tuning)
+- Production env template: `.env.production.example`
+- Dockerfile: includes seed binary for demo data
+- Makefile targets: `preview-up`, `preview-down`, `preview-logs`, `preview-deploy`
+
 ### CI/CD & Deployment — NOT STARTED
 
 **Prerequisites:**
-- Provision Hetzner VPS (CX21)
+- Provision permanent VPS (Hetzner CX21 or alternative)
 - Configure DNS for sachapel.com and staging.sachapel.com
 - Add SSH keys and secrets to GitHub repository settings
 - Install Docker and Docker Compose on VPS

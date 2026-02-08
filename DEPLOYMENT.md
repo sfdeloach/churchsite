@@ -573,6 +573,104 @@ docker compose exec -T app ./sachapel cleanup-bulletins --days=14
 
 ---
 
+## Temporary Preview Deployment (AWS EC2)
+
+A temporary preview environment for stakeholder review while the permanent production host is TBD. Uses a DuckDNS subdomain for free HTTPS.
+
+### EC2 Instance Setup
+
+1. **Launch instance:**
+   - AMI: Ubuntu 24.04 LTS
+   - Type: t3.micro (1 vCPU, 1GB RAM — free tier eligible)
+   - Region: us-east-1
+   - Storage: 20GB gp3
+   - Security group: allow ports 22 (SSH), 80 (HTTP), 443 (HTTPS)
+   - Allocate and associate an Elastic IP
+
+2. **Set up swap (critical for 1GB RAM):**
+   ```bash
+   sudo fallocate -l 2G /swapfile
+   sudo chmod 600 /swapfile
+   sudo mkswap /swapfile
+   sudo swapon /swapfile
+   echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+   ```
+
+3. **Install Docker:**
+   ```bash
+   curl -fsSL https://get.docker.com | sudo sh
+   sudo usermod -aG docker $USER
+   # Log out and back in for group to take effect
+   ```
+
+4. **Set up DuckDNS:**
+   - Register a subdomain at https://www.duckdns.org (e.g., `sachapel`)
+   - Point it to the Elastic IP
+   - Set up cron for automatic IP updates:
+     ```bash
+     mkdir -p ~/duckdns
+     cat > ~/duckdns/duck.sh << 'SCRIPT'
+     #!/bin/bash
+     echo url="https://www.duckdns.org/update?domains=sachapel&token=YOUR_TOKEN&ip=" | curl -k -o ~/duckdns/duck.log -K -
+     SCRIPT
+     chmod +x ~/duckdns/duck.sh
+     (crontab -l 2>/dev/null; echo "*/5 * * * * ~/duckdns/duck.sh >/dev/null 2>&1") | crontab -
+     ```
+
+5. **Deploy the application:**
+   ```bash
+   git clone https://github.com/sfdeloach/churchsite.git /opt/sachapel
+   cd /opt/sachapel
+   cp .env.production.example .env
+   # Edit .env with real values (database password, JWT secret, etc.)
+   vim .env
+
+   # Bootstrap Let's Encrypt certificate
+   ./scripts/init-letsencrypt.sh sachapel.duckdns.org admin@sachapel.com
+
+   # Start the full stack
+   make preview-up
+
+   # Run migrations and seed data
+   docker compose -f compose.yml -f compose.prod.yml exec app ./sachapel migrate up
+   docker compose -f compose.yml -f compose.prod.yml exec app ./seed
+   ```
+
+6. **Verify:**
+   ```bash
+   curl -s https://sachapel.duckdns.org/health
+   curl -s https://sachapel.duckdns.org/health/ready
+   ```
+
+### Manual Deploy Workflow
+
+```bash
+ssh ubuntu@<elastic-ip>
+cd /opt/sachapel
+make preview-deploy
+```
+
+### Memory Budget (t3.micro — 1GB RAM + 2GB swap)
+
+| Component  | Limit  |
+|------------|--------|
+| PostgreSQL | ~256MB |
+| Redis      | ~96MB  |
+| Go app     | ~100MB |
+| Nginx      | ~30MB  |
+| OS + Docker| ~200MB |
+| Headroom   | ~300MB |
+| Swap       | 2GB    |
+
+### Teardown
+
+1. Terminate the EC2 instance
+2. Release the Elastic IP
+3. Remove the DuckDNS subdomain
+4. Delete the security group
+
+---
+
 ## Environment Variables (.env.production)
 
 ```bash

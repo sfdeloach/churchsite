@@ -234,6 +234,26 @@ This document records major architectural decisions and their rationale. Referen
 
 ---
 
+## 14. Temporary AWS EC2 Preview Deployment
+
+**Decision:** Deploy a temporary preview site on AWS EC2 t3.micro with DuckDNS subdomain
+
+**Why:**
+
+- Stakeholders need a publicly accessible site for review before permanent host is provisioned
+- Permanent production host (Hetzner or Namecheap VPS with sachapel.com) is still TBD
+- DuckDNS provides free HTTPS-capable subdomain without domain purchase
+- t3.micro is free-tier eligible (~$0/month for first year, ~$8/month after)
+- All nginx/compose config is domain-independent (`server_name _`, `--cert-name sachapel`) so it transfers to the final host with minimal changes
+
+**Trade-offs:**
+
+- 1GB RAM requires swap and memory tuning (addressed in `compose.prod.yml`)
+- DuckDNS subdomain is not permanent (will be replaced by sachapel.com)
+- Manual deploys (no CI/CD yet)
+
+---
+
 ## Git Commit Convention Used
 
 ```

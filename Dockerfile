@@ -13,6 +13,7 @@ RUN go mod download
 COPY . .
 RUN templ generate
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /app/sachapel ./cmd/server
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /app/seed ./cmd/seed
 
 # Production stage
 FROM alpine:latest AS production
@@ -22,6 +23,7 @@ WORKDIR /app
 RUN apk add --no-cache ca-certificates tzdata
 
 COPY --from=builder /app/sachapel .
+COPY --from=builder /app/seed .
 COPY --from=builder /build/static ./static
 COPY --from=builder /build/migrations ./migrations
 
