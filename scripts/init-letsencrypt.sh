@@ -61,7 +61,7 @@ else
 fi
 
 echo "==> Requesting certificate from Let's Encrypt..."
-$COMPOSE run --rm certbot "${CERTBOT_ARGS[@]}"
+$COMPOSE run --rm --entrypoint certbot certbot "${CERTBOT_ARGS[@]}"
 
 # 5. Reload nginx with the real certificate
 echo "==> Reloading nginx..."
