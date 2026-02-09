@@ -254,6 +254,24 @@ This document records major architectural decisions and their rationale. Referen
 
 ---
 
+## 15. Remove `site_settings` Table
+
+**Decision:** Remove the `site_settings` database table and inline static values directly in Templ templates
+
+**Why:**
+
+- The 14 stored values (church name, address, service times, hero text) are essentially static — changing maybe once every few years
+- No admin CRUD UI was planned, so the only way to update values was raw SQL
+- The table added a DB round-trip on every page load for data that never changes
+- Removing it simplifies the codebase: eliminates a model, service, and `map[string]string` parameter threading through every handler and template
+
+**Trade-offs:**
+
+- Changing a value (e.g., service time) now requires a code change and deploy — acceptable given the change frequency
+- If runtime editability is ever needed, the table can be reintroduced with an admin UI at that point
+
+---
+
 ## Git Commit Convention Used
 
 ```
