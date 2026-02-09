@@ -14,7 +14,7 @@
 ### MVP - Phase 1
 
 1. Homepage with service times and upcoming events
-2. About section (Who We Are, Beliefs, History, Staff, Building)
+2. About section (Who We Are, Beliefs, History, Staff, Sanctuary)
 3. Ministry pages with staff-editable content
 4. Events calendar with CRUD, visibility scheduling, recurrence
 5. Bulletins (2-week retention, morning/evening PDFs)
@@ -75,7 +75,7 @@
 /about/worship                       # Theology of Worship
 /about/gospel                        # What Is the Gospel?
 /about/staff                         # Pastors & Staff
-/about/building                      # Our Place of Worship
+/about/sanctuary                      # Our Place of Worship
 
 /ministries                          # Ministry overview
 /ministries/{slug}                   # Individual ministry page

@@ -72,10 +72,10 @@ func (h *AboutHandler) Staff(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// Building renders the building/place of worship page.
-func (h *AboutHandler) Building(w http.ResponseWriter, r *http.Request) {
-	component := pages.AboutBuilding()
+// Sanctuary renders the sanctuary/place of worship page.
+func (h *AboutHandler) Sanctuary(w http.ResponseWriter, r *http.Request) {
+	component := pages.AboutSanctuary()
 	if err := component.Render(r.Context(), w); err != nil {
-		slog.Error("failed to render about building page", "error", err)
+		slog.Error("failed to render about sanctuary page", "error", err)
 	}
 }

@@ -94,7 +94,7 @@ func main() {
 	r.Get("/about/worship", aboutHandler.Worship)
 	r.Get("/about/gospel", aboutHandler.Gospel)
 	r.Get("/about/staff", aboutHandler.Staff)
-	r.Get("/about/building", aboutHandler.Building)
+	r.Get("/about/sanctuary", aboutHandler.Sanctuary)
 
 	// Start server
 	addr := fmt.Sprintf(":%s", cfg.AppPort)

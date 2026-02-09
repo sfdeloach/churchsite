@@ -89,7 +89,7 @@ Temporary preview environment for stakeholder review. See [DEPLOYMENT.md](DEPLOY
 - `GET /about/worship` — theology of worship, regulative principle
 - `GET /about/gospel` — the gospel explained for visitors
 - `GET /about/staff` — pastors and staff (data-driven from `staff_members` table)
-- `GET /about/building` — sanctuary, fellowship hall, grounds
+- `GET /about/sanctuary` — sanctuary, fellowship hall, grounds
 
 **Templates:**
 - Components: `page_header.templ` (reusable banner), `staff_card.templ` (photo placeholder + info)
