@@ -5,13 +5,13 @@ import (
 	"github.com/sfdeloach/churchsite/templates/layouts"
 )
 
-templ AboutHistory(settings map[string]string) {
-	@layouts.Base("Our History", settings) {
+templ AboutHistory() {
+	@layouts.Base("Our History") {
 		@components.PageHeader("Who We Are", "History & Identity")
 		<section class="about-content">
 			<div class="container">
 				<div class="content-section">
-					<h2>Saint Andrew&rsquo;s Reformed Legacy</h2>
+					<h2>A Reformed Congregation</h2>
 					<p>
 						Saint Andrew&rsquo;s was founded in 1997 as an independent congregation in the Reformed tradition. In
 						2023, the congregation was received into the Presbyterian Church in America (PCA). In 2025, the
@@ -23,7 +23,7 @@ templ AboutHistory(settings map[string]string) {
 						Andrew&rsquo;s Chapel. He will be remembered for the many ways he served the church in defending the
 						sufficiency of God&rsquo;s grace alone for our salvation as well as the trustworthiness of the Word of
 						God. He was a gifted communicator, and his ability to make complex topics easy to understand was evident
-						throughout his teaching and writing. Some of Dr. Sproul&rsquo;s most well-known books include: 
+						throughout his teaching and writing. Some of Dr. Sproul&rsquo;s most well-known books include:
 						<em>The Holiness of God</em>, <em>Chosen by God</em>, and <em>What is Reformed Theology?</em> Dr. Sproul founded
 						Ligonier Ministries, a ministry to help Christians know what they believe, how to live it, and how to
 						share it. More information about the ministry and legacy of Dr. Sproul can be found

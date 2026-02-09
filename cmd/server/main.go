@@ -60,14 +60,13 @@ func main() {
 	defer db.Close()
 
 	// Initialize services
-	siteSettingsSvc := services.NewSiteSettingsService(db.Postgres)
 	eventSvc := services.NewEventService(db.Postgres)
 	staffMemberSvc := services.NewStaffMemberService(db.Postgres)
 
 	// Initialize handlers
 	healthHandler := handlers.NewHealthHandler(db)
-	homeHandler := handlers.NewHomeHandler(siteSettingsSvc, eventSvc)
-	aboutHandler := handlers.NewAboutHandler(siteSettingsSvc, staffMemberSvc)
+	homeHandler := handlers.NewHomeHandler(eventSvc)
+	aboutHandler := handlers.NewAboutHandler(staffMemberSvc)
 
 	// Build router
 	r := chi.NewRouter()

@@ -6,8 +6,8 @@ import (
 	"github.com/sfdeloach/churchsite/templates/layouts"
 )
 
-templ AboutStaff(settings map[string]string, members []models.StaffMember) {
-	@layouts.Base("Pastors & Staff", settings) {
+templ AboutStaff(members []models.StaffMember) {
+	@layouts.Base("Pastors & Staff") {
 		@components.PageHeader("Pastors & Staff", "The people who serve our congregation")
 		<section class="about-content">
 			<div class="container">

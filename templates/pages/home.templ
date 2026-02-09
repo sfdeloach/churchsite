@@ -6,15 +6,18 @@ import (
 	"github.com/sfdeloach/churchsite/templates/layouts"
 )
 
-templ Home(settings map[string]string, events []models.Event) {
-	@layouts.Base("Home", settings) {
+templ Home(events []models.Event) {
+	@layouts.Base("Home") {
 		<section class="hero">
 			<div class="container">
-				<h1 class="hero__title">{ settings["hero_title"] }</h1>
-				<p class="hero__subtitle">{ settings["hero_subtitle"] }</p>
+				<h2 class="hero__title">Welcome to</h2>
+				<h1 class="hero__title hero__title-main">SAINT</h1>
+				<h1 class="hero__title hero__title-main">ANDREW&rsquo;S</h1>
+				<h1 class="hero__title hero__title-main">CHAPEL</h1>
+				<p class="hero__subtitle">Saint Andrew&rsquo;s Chapel is a congregation that worships in Sanford, Florida.</p>
 			</div>
 		</section>
-		@components.ServiceTimes(settings)
+		@components.ServiceTimes()
 		@components.EventGrid(events)
 	}
 }

@@ -5,8 +5,8 @@ import (
 	"github.com/sfdeloach/churchsite/templates/layouts"
 )
 
-templ AboutBuilding(settings map[string]string) {
-	@layouts.Base("Our Building", settings) {
+templ AboutBuilding() {
+	@layouts.Base("Our Building") {
 		@components.PageHeader("Our Building", "Our place of worship")
 		<section class="about-content">
 			<div class="container">

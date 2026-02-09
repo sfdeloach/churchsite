@@ -5,8 +5,8 @@ import (
 	"github.com/sfdeloach/churchsite/templates/layouts"
 )
 
-templ AboutWorship(settings map[string]string) {
-	@layouts.Base("Our Worship", settings) {
+templ AboutWorship() {
+	@layouts.Base("Our Worship") {
 		@components.PageHeader("Our Worship", "The theology and practice of Reformed worship")
 		<section class="about-content">
 			<div class="container">

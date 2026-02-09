@@ -1,6 +1,6 @@
 package components
 
-templ ServiceTimes(settings map[string]string) {
+templ ServiceTimes() {
 	<section class="service-times">
 		<div class="container">
 			<h2 class="section-title">Service Times</h2>
@@ -8,23 +8,23 @@ templ ServiceTimes(settings map[string]string) {
 				<div class="service-card">
 					<h3 class="service-card__title">Sunday</h3>
 					<div class="service-card__item">
-						<span class="service-card__name">{ settings["sunday_school_name"] }</span>
-						<span class="service-card__time">{ settings["sunday_school_time"] }</span>
+						<span class="service-card__name">Sunday School</span>
+						<span class="service-card__time">9:15 AM</span>
 					</div>
 					<div class="service-card__item">
-						<span class="service-card__name">{ settings["morning_service_name"] }</span>
-						<span class="service-card__time">{ settings["morning_service_time"] }</span>
+						<span class="service-card__name">Morning Worship</span>
+						<span class="service-card__time">10:30 AM</span>
 					</div>
 					<div class="service-card__item">
-						<span class="service-card__name">{ settings["evening_service_name"] }</span>
-						<span class="service-card__time">{ settings["evening_service_time"] }</span>
+						<span class="service-card__name">Evening Worship</span>
+						<span class="service-card__time">6:00 PM</span>
 					</div>
 				</div>
 				<div class="service-card">
 					<h3 class="service-card__title">Wednesday</h3>
 					<div class="service-card__item">
-						<span class="service-card__name">{ settings["wednesday_service_name"] }</span>
-						<span class="service-card__time">{ settings["wednesday_service_time"] }</span>
+						<span class="service-card__name">Prayer Meeting & Bible Study</span>
+						<span class="service-card__time">7:00 PM</span>
 					</div>
 				</div>
 			</div>

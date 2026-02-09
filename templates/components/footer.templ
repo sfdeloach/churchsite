@@ -7,30 +7,30 @@ func currentYear() string {
 	return fmt.Sprintf("%d", time.Now().Year())
 }
 
-templ Footer(settings map[string]string) {
+templ Footer() {
 	<footer class="site-footer">
 		<div class="container">
 			<div class="footer__content">
 				<div class="footer__info">
-					<h3 class="footer__title">{ settings["church_name"] }</h3>
-					<p class="footer__address">{ settings["church_address"] }</p>
-					<p class="footer__phone">{ settings["church_phone"] }</p>
+					<h3 class="footer__title">Saint Andrew's Chapel</h3>
+					<p class="footer__address">123 Main Street, Anytown, USA 12345</p>
+					<p class="footer__phone">(555) 123-4567</p>
 					<p class="footer__email">
-						<a href={ templ.SafeURL("mailto:" + settings["church_email"]) }>
-							{ settings["church_email"] }
+						<a href="mailto:info@sachapel.com">
+							info@sachapel.com
 						</a>
 					</p>
 				</div>
 				<div class="footer__services">
 					<h3 class="footer__title">Service Times</h3>
-					<p>{ settings["sunday_school_name"] }: { settings["sunday_school_time"] }</p>
-					<p>{ settings["morning_service_name"] }: { settings["morning_service_time"] }</p>
-					<p>{ settings["evening_service_name"] }: { settings["evening_service_time"] }</p>
-					<p>{ settings["wednesday_service_name"] }: { settings["wednesday_service_time"] }</p>
+					<p>Sunday School: 9:15 AM</p>
+					<p>Morning Worship: 10:30 AM</p>
+					<p>Evening Worship: 6:00 PM</p>
+					<p>Prayer Meeting & Bible Study: 7:00 PM</p>
 				</div>
 			</div>
 			<div class="footer__bottom">
-				<p>&copy; { currentYear() } { settings["church_name"] }. All rights reserved.</p>
+				<p>&copy; { currentYear() } Saint Andrew's Chapel. All rights reserved.</p>
 			</div>
 		</div>
 	</footer>

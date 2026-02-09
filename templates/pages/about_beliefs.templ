@@ -5,8 +5,8 @@ import (
 	"github.com/sfdeloach/churchsite/templates/layouts"
 )
 
-templ AboutBeliefs(settings map[string]string) {
-	@layouts.Base("What We Believe", settings) {
+templ AboutBeliefs() {
+	@layouts.Base("What We Believe") {
 		@components.PageHeader("What We Believe", "Our doctrine and confessional standards")
 		<section class="about-content">
 			<div class="container">

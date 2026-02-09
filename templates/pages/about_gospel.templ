@@ -5,8 +5,8 @@ import (
 	"github.com/sfdeloach/churchsite/templates/layouts"
 )
 
-templ AboutGospel(settings map[string]string) {
-	@layouts.Base("The Gospel", settings) {
+templ AboutGospel() {
+	@layouts.Base("The Gospel") {
 		@components.PageHeader("The Gospel", "The good news of Jesus Christ")
 		<section class="about-content">
 			<div class="container">
