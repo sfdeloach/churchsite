@@ -3,6 +3,7 @@ package pages
 import (
 	"github.com/sfdeloach/churchsite/internal/models"
 	"github.com/sfdeloach/churchsite/templates/components"
+	"github.com/sfdeloach/churchsite/templates/icons"
 	"github.com/sfdeloach/churchsite/templates/layouts"
 )
 
@@ -11,10 +12,11 @@ templ Home(events []models.Event) {
 		<section class="hero">
 			<div class="container">
 				<h2 class="hero__title">Welcome to</h2>
-				<h1 class="hero__title hero__title-main">SAINT</h1>
-				<h1 class="hero__title hero__title-main">ANDREW&rsquo;S</h1>
-				<h1 class="hero__title hero__title-main">CHAPEL</h1>
-				<p class="hero__subtitle">Saint Andrew&rsquo;s Chapel is a congregation that worships in Sanford, Florida.</p>
+				<div class="hero__logo">
+					@icons.Arch(120, 60)
+					<h1>SAINT<br/>ANDREW&rsquo;S<br/>CHAPEL</h1>
+				</div>
+				<p class="hero__subtitle">A reformed congregation that worships in Sanford, Florida.</p>
 			</div>
 		</section>
 		@components.ServiceTimes()

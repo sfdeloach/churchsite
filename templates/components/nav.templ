@@ -1,10 +1,13 @@
 package components
 
+import "github.com/sfdeloach/churchsite/templates/icons"
+
 templ Nav() {
 	<header class="site-header">
 		<div class="container" x-data="{ open: false }">
 			<a href="/" class="site-logo">
-				Saint Andrew's Chapel
+				@icons.Arch(50, 25)
+				<p>SAINT<br/>ANDREW&rsquo;S<br/>CHAPEL</p>
 			</a>
 			<button
 				class="nav-toggle"

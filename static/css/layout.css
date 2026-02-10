@@ -18,18 +18,26 @@
 }
 
 .site-logo {
-  font-family: var(--font-family);
-  font-size: var(--font-size-lg);
-  text-transform: uppercase;
-  letter-spacing: var(--space-sm);
+  display: flex;
+  align-items: center;
+  column-gap: var(--space-sm);
+  fill: var(--color-white);
   color: var(--color-white);
-  font-weight: 500;
-  white-space: nowrap;
 }
 
 .site-logo:hover {
+  fill: var(--color-secondary-light);
   color: var(--color-secondary-light);
   text-decoration: none;
+}
+
+.site-logo > p {
+  margin-bottom: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--space-sm);
 }
 
 /* Hamburger toggle */
