@@ -11,9 +11,9 @@ templ Home(events []models.Event) {
 	@layouts.Base("Home") {
 		<section class="hero">
 			<div class="container">
-				<h2 class="hero__title">Welcome to</h2>
+				<span class="hero__title">Welcome to</span>
 				<div class="hero__logo">
-					@icons.Arch(120, 60)
+					@icons.Arch(templ.Attributes{"height": "120", "width": "60"})
 					<h1>SAINT<br/>ANDREW&rsquo;S<br/>CHAPEL</h1>
 				</div>
 				<p class="hero__subtitle">A reformed congregation that worships in Sanford, Florida.</p>

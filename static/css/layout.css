@@ -31,13 +31,13 @@
   text-decoration: none;
 }
 
-.site-logo > p {
+.site-logo > span {
   margin-bottom: 0;
   font-family: var(--font-family);
   font-size: var(--font-size-lg);
   font-weight: 500;
   line-height: 1;
-  letter-spacing: var(--space-sm);
+  letter-spacing: 0.4rem;
 }
 
 /* Hamburger toggle */

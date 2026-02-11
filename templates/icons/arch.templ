@@ -1,27 +1,15 @@
 package icons
 
-templ Arch(height, width int) {
+templ Arch(attrs templ.Attributes) {
 	<svg
 		version="1.1"
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 50 100"
-		height={ height }
-		width={ width }
+		{ attrs... }
 	>
-		<mask id="arch-mask">
-			<rect x="0" y="0" width="50" height="100" fill="white"></rect>
-			<path
-				d="M 5 40 V 95 H 45 V 40 A 50 50 0 0 0 25 5 A 50 50 0 0 0 5 40 Z"
-				fill="black"
-			></path>
-		</mask>
-		<rect
-			x="0"
-			y="0"
-			width="50"
-			height="100"
-			
-			mask="url(#arch-mask)"
-		></rect>
+		<path
+			fill-rule="evenodd"
+			d="M 0 0 H 50 V 100 H 0 Z M 5 40 V 95 H 45 V 40 A 50 50 0 0 0 25 5 A 50 50 0 0 0 5 40 Z"
+		></path>
 	</svg>
 }
