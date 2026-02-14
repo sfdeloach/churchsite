@@ -74,57 +74,63 @@
   background-color: var(--color-gray-50);
 }
 
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-xl);
-  max-width: 700px;
+.schedule {
+  max-width: 480px;
   margin-inline: auto;
 }
 
-.service-card {
-  background-color: var(--color-white);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-  box-shadow: var(--shadow-md);
-  text-align: center;
-}
-
-.service-card__title {
-  font-size: var(--font-size-xl);
+.schedule__heading {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   color: var(--color-primary);
-  margin-bottom: var(--space-lg);
-  padding-bottom: var(--space-sm);
-  border-bottom: 2px solid var(--color-gray-100);
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-xs);
+  border-bottom: 2px solid var(--color-primary);
 }
 
-.service-card__item {
+.schedule__heading:first-child {
+  margin-top: 0;
+}
+
+.schedule__entry {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   padding: var(--space-sm) 0;
-  border-bottom: 1px solid var(--color-gray-100);
 }
 
-.service-card__item:last-child {
-  border-bottom: none;
-}
-
-.service-card__name {
-  font-weight: 600;
+.schedule__name {
+  font-size: var(--font-size-base);
   color: var(--color-gray-700);
-  font-size: var(--font-size-sm);
 }
 
-.service-card__time {
+.schedule__time {
+  font-family: var(--font-family);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
   color: var(--color-secondary);
-  font-weight: 700;
-  font-size: var(--font-size-sm);
 }
 
 /* Events section */
 .events-section {
   padding: var(--space-3xl) 0;
+  position: relative;
+  background: url("/static/images/church-aerial.webp") center / cover no-repeat;
+}
+
+.events-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.625);
+}
+
+.events-section > .container {
+  position: relative;
 }
 
 .event-grid {

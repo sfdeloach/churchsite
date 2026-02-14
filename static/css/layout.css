@@ -164,6 +164,24 @@ main {
   margin-bottom: var(--space-2xl);
 }
 
+.footer__logo {
+  display: flex;
+  align-items: center;
+  column-gap: var(--space-sm);
+  fill: var(--color-white);
+  margin-bottom: var(--space-md);
+}
+
+.footer__logo > span {
+  font-family: var(--font-family);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.4rem;
+  text-align: left;
+  color: var(--color-white);
+}
+
 .footer__title {
   font-size: var(--font-size-lg);
   color: var(--color-white);
@@ -247,5 +265,10 @@ main {
   .footer__content {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
+    text-align: center;
+  }
+
+  .footer__logo {
+    justify-content: center;
   }
 }
