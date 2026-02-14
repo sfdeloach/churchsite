@@ -184,6 +184,7 @@ Migrations live in `migrations/` as numbered SQL file pairs. The naming conventi
 | 20250101000004 | Create `staff_members` table with indexes |
 | 20250101000005 | Seed 5 staff members |
 | 20250101000006 | Drop `site_settings` table (inlined into templates per DECISIONS.md #15) |
+| 20250101000007 | Add `category` column to `staff_members` with index |
 
 ## Design System
 

@@ -74,13 +74,13 @@ Temporary preview environment for stakeholder review. See [DEPLOYMENT.md](DEPLOY
 ### Step 2: About Section — COMPLETE
 
 **Database:**
-- `staff_members` table (soft-delete) with `name`, `title`, `bio`, `email`, `phone`, `photo_url`, `display_order`, `is_active`, nullable `user_id` (FK deferred to Step 7)
-- Migrations: `20250101000004` (create table), `20250101000005` (seed 5 staff members)
+- `staff_members` table (soft-delete) with `name`, `title`, `bio`, `email`, `phone`, `photo_url`, `display_order`, `is_active`, `category`, nullable `user_id` (FK deferred to Step 7)
+- Migrations: `20250101000004` (create table), `20250101000005` (seed 5 staff members), `20250101000007` (add `category VARCHAR(50)` column with index, backfill pastors)
 
 **Backend:**
-- Model: `StaffMember` (`internal/models/staff_member.go`) — soft-delete, embeds `gorm.Model`
-- Service: `StaffMemberService.GetActive()` (`internal/services/staff_member.go`)
-- Handler: `AboutHandler` (`internal/handlers/about.go`) — 6 page methods + `Index` redirect
+- Model: `StaffMember` (`internal/models/staff_member.go`) — soft-delete, embeds `gorm.Model`, `StaffCategory` typed string with constants (`CategoryPastor`, `CategoryStaff`), `StaffCategories` map with display labels/ordering, `OrderedStaffCategories()` helper
+- Service: `StaffMemberService.GetActive()`, `GroupByCategory()` (`internal/services/staff_member.go`)
+- Handler: `AboutHandler` (`internal/handlers/about.go`) — 6 page methods + `Index` redirect, `Staff()` groups members by category
 
 **Routes:**
 - `GET /about` → 301 redirect to `/about/history`
