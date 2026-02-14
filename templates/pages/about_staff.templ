@@ -6,16 +6,23 @@ import (
 	"github.com/sfdeloach/churchsite/templates/layouts"
 )
 
-templ AboutStaff(members []models.StaffMember) {
+templ AboutStaff(grouped map[models.StaffCategory][]models.StaffMember) {
 	@layouts.Base("Pastors & Staff") {
-		@components.PageHeader("Pastors & Staff", "The people who serve our congregation")
-		<section class="about-content">
+		@components.PageHeader("Who We Are", "Pastors & Staff")
+		<section class="about-content about-content--staff">
 			<div class="container">
-				<div class="staff-grid">
-					for _, member := range members {
-						@components.StaffCard(member)
+				for _, cat := range models.OrderedStaffCategories() {
+					if members, ok := grouped[cat]; ok && len(members) > 0 {
+						<div class="staff-section">
+							<h2 class="staff-section__title">{ models.StaffCategories[cat].Label }</h2>
+							<div class="staff-grid">
+								for _, member := range members {
+									@components.StaffCard(member)
+								}
+							</div>
+						</div>
 					}
-				</div>
+				}
 			</div>
 		</section>
 	}

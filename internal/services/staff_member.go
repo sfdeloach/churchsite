@@ -26,3 +26,12 @@ func (s *StaffMemberService) GetActive() ([]models.StaffMember, error) {
 
 	return members, err
 }
+
+// GroupByCategory groups staff members by their category.
+func GroupByCategory(members []models.StaffMember) map[models.StaffCategory][]models.StaffMember {
+	grouped := make(map[models.StaffCategory][]models.StaffMember)
+	for _, m := range members {
+		grouped[m.Category] = append(grouped[m.Category], m)
+	}
+	return grouped
+}

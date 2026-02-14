@@ -66,7 +66,8 @@ func (h *AboutHandler) Staff(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	component := pages.AboutStaff(members)
+	grouped := services.GroupByCategory(members)
+	component := pages.AboutStaff(grouped)
 	if err := component.Render(r.Context(), w); err != nil {
 		slog.Error("failed to render about staff page", "error", err)
 	}

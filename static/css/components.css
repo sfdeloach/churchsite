@@ -322,6 +322,27 @@
   margin-bottom: var(--space-sm);
 }
 
+/* Staff sections */
+.about-content--staff .container {
+  max-width: 1040px;
+}
+
+.staff-section {
+  margin-bottom: var(--space-3xl);
+}
+
+.staff-section:last-child {
+  margin-bottom: 0;
+}
+
+.staff-section__title {
+  font-size: var(--font-size-2xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--color-secondary);
+}
+
 /* Staff grid */
 .staff-grid {
   display: grid;
