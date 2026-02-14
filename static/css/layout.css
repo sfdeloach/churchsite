@@ -246,6 +246,10 @@ main {
     padding: var(--space-md);
   }
 
+  .nav__dropdown-toggle {
+    display: inline-flex;
+  }
+
   .nav__item--dropdown {
     position: static;
   }
