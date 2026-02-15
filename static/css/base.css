@@ -194,8 +194,6 @@ h6 {
 
 p {
   margin-bottom: var(--space-md);
-  overflow-wrap: break-word;
-  hyphens: auto;
 }
 
 p:last-child {
@@ -206,8 +204,6 @@ blockquote {
   padding-left: var(--space-lg);
   border-left: 4px solid var(--color-gray-100);
   font-style: italic;
-  overflow-wrap: break-word;
-  hyphens: auto;
 }
 
 blockquote p::before {

@@ -115,6 +115,31 @@
   color: var(--color-secondary);
 }
 
+.schedule__footer {
+  max-width: 768px;
+  margin-inline: auto;
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  padding-left: 0;
+  border-left: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-2xl);
+  text-align: center;
+  text-wrap: balance;
+  color: var(--color-gray-600);
+  letter-spacing: 0.04em;
+  line-height: 1.8;
+}
+
+.schedule__footer::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-secondary);
+  margin: 0 auto var(--space-lg);
+}
+
 /* Events section */
 .events-section {
   padding: var(--space-3xl) 0;
