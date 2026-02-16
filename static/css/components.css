@@ -328,10 +328,16 @@
   margin-top: 0;
 }
 
-.content-section p {
+.content-section p,
+.content-section dl,
+.content-section ul {
   font-size: var(--font-size-lg);
   line-height: 1.8;
   color: var(--color-gray-700);
+}
+
+.content-section > blockquote > p {
+  color: var(--color-gray-500);
 }
 
 .content-list {
@@ -345,6 +351,13 @@
   line-height: 1.8;
   color: var(--color-gray-700);
   margin-bottom: var(--space-sm);
+}
+
+.acrostic-letter {
+  font-family: var(--font-family);
+  font-size: 1.3em;
+  font-weight: 700;
+  color: var(--color-primary);
 }
 
 /* Staff sections */
