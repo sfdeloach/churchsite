@@ -81,7 +81,7 @@ templ ScriptureRef(id, ref, verseText, suffix string) {
 		x-on:blur="hide()"
 		x-bind:aria-expanded={ "activeRef === '" + id + "'" }
 		aria-describedby="scripture-tooltip"
-	>({ ref })</cite>{ suffix }
+	>{ ref }</cite>{ suffix }
 }
 
 // ScriptureTooltip renders the shared floating tooltip element.
