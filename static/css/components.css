@@ -461,6 +461,120 @@
   color: var(--color-primary-light);
 }
 
+/* ESV copyright */
+.esv-copyright {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-gray-200);
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-400);
+  line-height: 1.6;
+}
+
+/* Scripture reference tooltips */
+.scripture-ref {
+  font-style: normal;
+  color: var(--color-gray-700);
+  border-bottom: 1px dotted var(--color-accent);
+  cursor: help;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.scripture-ref:hover,
+.scripture-ref:focus {
+  color: var(--color-primary);
+  border-bottom-style: solid;
+}
+
+.scripture-ref:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.scripture-tooltip {
+  position: absolute;
+  z-index: 200;
+  width: max-content;
+  max-width: min(420px, calc(100vw - 16px));
+  background-color: var(--color-gray-800);
+  color: var(--color-gray-100);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.scripture-tooltip__body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+  max-height: min(300px, 50vh);
+  overflow-y: auto;
+}
+
+.scripture-tooltip__body strong {
+  display: block;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.scripture-tooltip__body strong:first-child {
+  margin-top: 0;
+}
+
+.scripture-tooltip__caret {
+  position: absolute;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-bottom-color: var(--color-gray-800);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.scripture-tooltip--above .scripture-tooltip__caret {
+  top: 100%;
+  bottom: auto;
+  border-bottom-color: transparent;
+  border-top-color: var(--color-gray-800);
+}
+
+/* Tooltip transitions */
+.scripture-tooltip--enter {
+  transition: opacity var(--transition-fast);
+}
+
+.scripture-tooltip--enter-start {
+  opacity: 0;
+}
+
+.scripture-tooltip--enter-end {
+  opacity: 1;
+}
+
+.scripture-tooltip--leave {
+  transition: opacity var(--transition-fast);
+}
+
+.scripture-tooltip--leave-start {
+  opacity: 1;
+}
+
+.scripture-tooltip--leave-end {
+  opacity: 0;
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .hero {

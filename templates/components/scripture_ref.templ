@@ -1,0 +1,110 @@
+package components
+
+// ScriptureScope wraps content with Alpine.js state for scripture tooltips.
+templ ScriptureScope() {
+	<div
+		x-data="{
+			activeRef: null,
+			tooltipText: '',
+			tooltipLabel: '',
+			top: 0,
+			left: 0,
+			caretLeft: 0,
+			above: false,
+			hideTimer: null,
+			show(id, el) {
+				clearTimeout(this.hideTimer);
+				if (this.activeRef === id) return;
+				this.activeRef = id;
+				this.tooltipText = el.getAttribute('data-verse');
+				this.tooltipLabel = el.textContent.trim().replace(/^\(|\)$/g, '');
+				this.$nextTick(() => this.position(el));
+			},
+			hide() {
+				this.hideTimer = setTimeout(() => { this.activeRef = null; }, 100);
+			},
+			clearHideTimer() {
+				clearTimeout(this.hideTimer);
+			},
+			toggle(id, el) {
+				if (this.activeRef === id) {
+					this.activeRef = null;
+				} else {
+					this.show(id, el);
+				}
+			},
+			position(el) {
+				const rect = el.getBoundingClientRect();
+				const tip = this.$refs.tooltip;
+				if (!tip) return;
+				const tipRect = tip.getBoundingClientRect();
+				const scrollY = window.scrollY;
+				const scrollX = window.scrollX;
+				const gap = 8;
+				let t = rect.bottom + scrollY + gap;
+				this.above = false;
+				if (rect.bottom + tipRect.height + gap > window.innerHeight && rect.top > tipRect.height + gap) {
+					t = rect.top + scrollY - tipRect.height - gap;
+					this.above = true;
+				}
+				const elCenter = rect.left + rect.width / 2 + scrollX;
+				let l = elCenter - tipRect.width / 2;
+				const pad = 8;
+				if (l < pad + scrollX) l = pad + scrollX;
+				if (l + tipRect.width > window.innerWidth + scrollX - pad) l = window.innerWidth + scrollX - pad - tipRect.width;
+				this.top = t;
+				this.left = l;
+				this.caretLeft = elCenter - l;
+			}
+		}"
+		x-on:keydown.escape.window="activeRef = null"
+		x-on:click="if (!$event.target.closest('.scripture-ref') && !$event.target.closest('.scripture-tooltip')) { activeRef = null }"
+	>
+		{ children... }
+		@ScriptureTooltip()
+	</div>
+}
+
+// ScriptureRef renders an interactive scripture citation with tooltip data.
+// The suffix parameter (e.g. "." or ",") is rendered immediately after the
+// closing tag to avoid whitespace between the citation and punctuation.
+templ ScriptureRef(id, ref, verseText, suffix string) {
+	<cite
+		class="scripture-ref"
+		data-verse={ verseText }
+		tabindex="0"
+		role="button"
+		x-on:mouseenter={ "show('" + id + "', $el)" }
+		x-on:mouseleave="hide()"
+		x-on:click={ "toggle('" + id + "', $el)" }
+		x-on:focus={ "show('" + id + "', $el)" }
+		x-on:blur="hide()"
+		x-bind:aria-expanded={ "activeRef === '" + id + "'" }
+		aria-describedby="scripture-tooltip"
+	>({ ref })</cite>{ suffix }
+}
+
+// ScriptureTooltip renders the shared floating tooltip element.
+templ ScriptureTooltip() {
+	<div
+		id="scripture-tooltip"
+		class="scripture-tooltip"
+		role="tooltip"
+		x-ref="tooltip"
+		x-show="activeRef !== null"
+		x-transition:enter="scripture-tooltip--enter"
+		x-transition:enter-start="scripture-tooltip--enter-start"
+		x-transition:enter-end="scripture-tooltip--enter-end"
+		x-transition:leave="scripture-tooltip--leave"
+		x-transition:leave-start="scripture-tooltip--leave-start"
+		x-transition:leave-end="scripture-tooltip--leave-end"
+		x-bind:style="'top:' + top + 'px;left:' + left + 'px;'"
+		x-bind:class="above && 'scripture-tooltip--above'"
+		x-on:mouseenter="clearHideTimer()"
+		x-on:mouseleave="hide()"
+		x-cloak
+	>
+		<div class="scripture-tooltip__body" x-html="tooltipText"></div>
+		<div class="scripture-tooltip__caret" x-bind:style="'left:' + caretLeft + 'px;'"></div>
+	</div>
+}

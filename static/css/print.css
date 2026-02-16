@@ -36,4 +36,13 @@
         break-inside: avoid;
         box-shadow: none;
     }
+
+    .scripture-tooltip {
+        display: none !important;
+    }
+
+    .scripture-ref {
+        border-bottom: none;
+        cursor: default;
+    }
 }
