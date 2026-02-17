@@ -17,9 +17,11 @@
   margin-bottom: var(--space-md);
   color: var(--color-white);
   font-family: var(--font-family);
-  font-size: var(--font-size-3xl);
-  font-weight: 500;
+  font-size: var(--font-size-xl);
+  font-weight: 400;
   line-height: 1.2;
+  letter-spacing: var(--letter-spacing-looser);
+  opacity: 0.9;
 }
 
 .hero__logo {
@@ -40,7 +42,7 @@
   font-weight: 500;
   text-align: left;
   line-height: 1.25;
-  letter-spacing: 0.667rem;
+  letter-spacing: var(--letter-spacing-brand);
 }
 
 .hero__subtitle {
@@ -50,19 +52,27 @@
   margin-inline: auto;
 }
 
+.hero__actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  margin-top: var(--space-xl);
+}
+
 /* Section titles */
 .section-title {
   text-align: center;
   margin-bottom: var(--space-2xl);
   position: relative;
   padding-bottom: var(--space-md);
+  letter-spacing: var(--letter-spacing-looser);
 }
 
 .section-title::after {
   content: "";
   display: block;
-  width: 60px;
-  height: 3px;
+  width: 80px;
+  height: 4px;
   background-color: var(--color-secondary);
   margin: var(--space-sm) auto 0;
   border-radius: var(--radius-sm);
@@ -84,7 +94,7 @@
   font-size: var(--font-size-xs);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--letter-spacing-looser);
   color: var(--color-primary);
   margin-top: var(--space-xl);
   margin-bottom: var(--space-sm);
@@ -127,7 +137,7 @@
   text-align: center;
   text-wrap: balance;
   color: var(--color-gray-600);
-  letter-spacing: 0.04em;
+  letter-spacing: var(--letter-spacing-loose);
   line-height: 1.8;
 }
 
@@ -165,17 +175,24 @@
 }
 
 .event-card {
+  position: relative;
   display: flex;
   gap: var(--space-md);
   background-color: var(--color-white);
   border: 1px solid var(--color-gray-200);
   border-radius: var(--radius-md);
   padding: var(--space-lg);
-  transition: box-shadow var(--transition-base);
+  cursor: pointer;
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base),
+    border-color var(--transition-base);
 }
 
 .event-card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--color-gray-300);
 }
 
 .event-card__date {
@@ -185,7 +202,7 @@
   justify-content: center;
   min-width: 60px;
   padding: var(--space-sm);
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   border-radius: var(--radius-sm);
   color: var(--color-white);
   line-height: 1;
@@ -194,7 +211,7 @@
 .event-card__month {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--letter-spacing-looser);
   font-weight: 600;
 }
 
@@ -217,8 +234,23 @@
   color: var(--color-gray-900);
 }
 
-.event-card__title a:hover {
+.event-card__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.event-card:hover .event-card__title a {
   color: var(--color-primary);
+}
+
+.event-card__title a:focus-visible {
+  outline: none;
+}
+
+.event-card:has(.event-card__title a:focus-visible) {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
 }
 
 .event-card__time,
@@ -275,6 +307,23 @@
   text-decoration: none;
 }
 
+.btn--outline-light {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+.btn--outline-light:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
 /* Cards (generic) */
 .card {
   background-color: var(--color-white);
@@ -301,6 +350,7 @@
   font-size: var(--font-size-3xl);
   color: var(--color-white);
   margin-bottom: var(--space-xs);
+  letter-spacing: var(--letter-spacing-display);
 }
 
 .page-header__subtitle {
@@ -518,7 +568,7 @@
   font-size: var(--font-size-xs);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--letter-spacing-looser);
   color: var(--color-accent);
   margin-top: var(--space-sm);
   margin-bottom: var(--space-xs);
@@ -582,7 +632,7 @@
   }
 
   .hero__title {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-lg);
   }
 
   .hero__logo {
@@ -592,10 +642,16 @@
   .hero__logo > h1 {
     font-size: var(--font-size-3xl);
     text-align: center;
+    letter-spacing: calc(var(--letter-spacing-brand) * 0.75);
   }
 
   .hero__subtitle {
     font-size: var(--font-size-lg);
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .event-grid {

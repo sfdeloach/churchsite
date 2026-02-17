@@ -37,7 +37,7 @@
   font-size: var(--font-size-lg);
   font-weight: 500;
   line-height: 1;
-  letter-spacing: 0.4rem;
+  letter-spacing: var(--letter-spacing-brand);
 }
 
 /* Hamburger toggle */
@@ -80,6 +80,11 @@
   color: var(--color-white);
   background-color: var(--color-primary-light);
   text-decoration: none;
+}
+
+.nav__link:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
 }
 
 .nav__link--cta {
@@ -144,6 +149,11 @@
   text-decoration: none;
 }
 
+.nav__dropdown-link:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
 /* Main content area */
 main {
   flex: 1;
@@ -177,7 +187,7 @@ main {
   font-size: var(--font-size-lg);
   font-weight: 500;
   line-height: 1;
-  letter-spacing: 0.4rem;
+  letter-spacing: var(--letter-spacing-brand);
   text-align: left;
   color: var(--color-white);
 }
