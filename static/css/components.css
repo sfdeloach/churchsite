@@ -556,7 +556,7 @@
 
 .scripture-tooltip__body {
   font-family: var(--font-family);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
   line-height: 1.7;
   max-height: min(300px, 50vh);
   overflow-y: auto;
