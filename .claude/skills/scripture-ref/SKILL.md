@@ -33,13 +33,13 @@ Read the target page template in `templates/pages/`. Find all scripture citation
 
 For each citation, look up the exact ESV text. Use `WebFetch` with `https://www.esv.org/<Book>+<Chapter>:<Verses>/` to get accurate text from esv.org.
 
-For multi-verse groups (e.g., `1 Tim. 3:15; Matt. 28:19; 16:19`), fetch each reference separately.
+Each verse reference always gets its own individual `ScriptureRef` call and tooltip — even when multiple references appear within the same parenthetical group (e.g., `(1 Tim. 3:15; Matt. 28:19; 16:19)`). Fetch each reference separately.
 
 For full-chapter references (e.g., `John 11`, `Acts 6`), select 1-4 key representative verses and add `<em>See [chapter] for full context.</em>` at the end.
 
 ### 3. Format Verse Text as HTML
 
-The `verseText` parameter accepts HTML rendered via Alpine.js `x-html`. Format multi-reference tooltips using `<strong>` tags as section headers:
+The `verseText` parameter accepts HTML rendered via Alpine.js `x-html`. Each tooltip contains a single reference with a `<strong>` header followed by the verse text:
 
 ```
 <strong>Romans 5:18&ndash;19</strong>Therefore, as one trespass led to condemnation for all men, so one act of righteousness leads to justification and life for all men. For as by the one man&rsquo;s disobedience the many were made sinners, so by the one man&rsquo;s obedience the many will be made righteous.
@@ -69,7 +69,7 @@ Add the `components` import if not already present. Wrap the content area in `@c
 
 Replace each citation with a component call. Each call must be on its own line. **Important:** Templ does NOT insert whitespace between text nodes and component calls. Use `&nbsp;` before citations and trailing spaces in suffixes to manage spacing.
 
-**Parenthetical citation** — include `(` and `)` in the `ref` parameter:
+**Parenthetical citation — single reference** — include `(` and `)` in the `ref` parameter:
 
 Before:
 ```
@@ -81,6 +81,22 @@ After:
 ...the believer&nbsp;
 @components.ScriptureRef("unique-id", "(Rom. 5:18-19)", `<strong>Romans 5:18&ndash;19</strong>verse text...`, ". ")
 The sole ground...
+```
+
+**Parenthetical citation — multi-reference group** — split into individual `ScriptureRef` calls. The opening `(` goes on the first ref, the closing `)` goes on the last ref. Semicolons stay with each ref's display text:
+
+Before:
+```
+...rightful head (1 Tim. 3:15; Matt. 16:19; Matt. 28:19; 1 Cor. 11:24–26).
+```
+
+After:
+```
+...rightful head&nbsp;
+@components.ScriptureRef("marks-church-tim", "(1 Tim. 3:15;", `<strong>1 Timothy 3:15</strong>verse text...`, " ")
+@components.ScriptureRef("marks-church-matt-16", "Matt. 16:19;", `<strong>Matthew 16:19</strong>verse text...`, " ")
+@components.ScriptureRef("marks-church-matt-28", "Matt. 28:19;", `<strong>Matthew 28:19</strong>verse text...`, " ")
+@components.ScriptureRef("marks-church-cor", "1 Cor. 11:24–26)", `<strong>1 Corinthians 11:24&ndash;26</strong>verse text...`, ".")
 ```
 
 **Inline citation** — use plain `ref` without parentheses:
@@ -115,7 +131,7 @@ to represent...
 | Parameter | Description | Example |
 |-----------|-------------|---------|
 | `id` | Unique identifier for this citation | `"sola-fide-1"`, `"total-depravity"` |
-| `ref` | Display text rendered inside `<cite>` tag — include `(` `)` for parenthetical, plain for inline | `"(Rom. 5:18-19)"`, `"Ezekiel 1:5–10"` |
+| `ref` | Display text rendered inside `<cite>` tag — include `(` `)` for parenthetical, plain for inline. For multi-ref groups, `(` goes on first ref and `)` on last ref, with semicolons on each ref | `"(Rom. 5:18-19)"`, `"(1 Tim. 3:15;"`, `"Matt. 28:19)"`, `"Ezekiel 1:5–10"` |
 | `verseText` | HTML string with ESV verse text (use backtick raw string) | `` `<strong>Romans 5:18</strong>Therefore...` `` |
 | `suffix` | Punctuation rendered immediately after `</cite>` — include trailing space if text follows | `". "`, `","`, `" "` |
 
@@ -134,8 +150,10 @@ Use descriptive kebab-case IDs that relate to the theological topic:
 // Parenthetical — single reference
 @components.ScriptureRef("covenant-promise", "(Gen. 3:15)", `<strong>Genesis 3:15</strong>I will put enmity between you and the woman, and between your offspring and her offspring; he shall bruise your head, and you shall bruise his heel.`, ".")
 
-// Parenthetical — multi-reference group
-@components.ScriptureRef("marks-church", "(1 Tim. 3:15; Matt. 28:19; 16:19)", `<strong>1 Timothy 3:15</strong>...if I delay, you may know how one ought to behave in the household of God, which is the church of the living God, a pillar and buttress of the truth. <strong>Matthew 28:19</strong>Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, <strong>Matthew 16:19</strong>I will give you the keys of the kingdom of heaven, and whatever you bind on earth shall be bound in heaven, and whatever you loose on earth shall be loosed in heaven.`, ".")
+// Parenthetical — multi-reference group (each verse gets its own tooltip)
+@components.ScriptureRef("marks-church-tim", "(1 Tim. 3:15;", `<strong>1 Timothy 3:15</strong>...if I delay, you may know how one ought to behave in the household of God, which is the church of the living God, a pillar and buttress of the truth.`, " ")
+@components.ScriptureRef("marks-church-matt-16", "Matt. 16:19;", `<strong>Matthew 16:19</strong>I will give you the keys of the kingdom of heaven, and whatever you bind on earth shall be bound in heaven, and whatever you loose on earth shall be loosed in heaven.`, " ")
+@components.ScriptureRef("marks-church-matt-28", "Matt. 28:19)", `<strong>Matthew 28:19</strong>Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit,`, ".")
 
 // Parenthetical — mid-sentence (comma suffix with trailing space)
 @components.ScriptureRef("baptism-circumcision", "(Col. 2:11-12)", `<strong>Colossians 2:11-12</strong>In him also you were circumcised with a circumcision made without hands...`, ", ")
@@ -146,7 +164,7 @@ Use descriptive kebab-case IDs that relate to the theological topic:
 
 ## Existing Implementations
 
-- `templates/pages/about_beliefs.templ` — 20 parenthetical scripture reference tooltips
+- `templates/pages/about_beliefs.templ` — 46 scripture reference tooltips (parenthetical, individually split)
 - `templates/pages/about_sanctuary.templ` — 4 citations (3 inline, 1 parenthetical)
 
 ## After Adding Tooltips
