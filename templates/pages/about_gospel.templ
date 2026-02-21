@@ -10,56 +10,86 @@ templ AboutGospel() {
 		@components.PageHeader("What We Believe", "What is the Gospel?")
 		<section class="about-content">
 			<div class="container">
-				<div class="content-section">
-					<h2>What Is the Gospel?</h2>
-					<p>
-						The word "gospel" means "good news." It is the most important message
-						in all of human history — the announcement that God has acted to save
-						sinners through the life, death, and resurrection of His Son, Jesus
-						Christ.
+				@components.ScriptureScope() {
+					<div class="content-section">
+						<h2>Good News</h2>
+						<p>
+							Gospel means, simply, “good news.” There are numerous so-called gospels in the world
+							proclaiming good news to those who would listen, and these gospels come in any number of
+							forms—from the gospel of wealth and power to the gospel of health and beauty. These
+							gospels, however, do not address the most basic problem that all men and women have—the
+							problem of sin and guilt; that is, spiritual deadness.
+						</p>
+						<p>
+							Put simply, the Gospel is the good news of Jesus Christ. It is good news because, without
+							it, we stand condemned as sinners before a holy and just God, deserving His wrath. In
+							Isaiah’s vision of the throne room of God, seraphim (angelic beings) cry out continually,
+							“Holy, holy, holy is the Lord of hosts; the whole earth is full of His glory!” Isaiah,
+							overwhelmed in the presence of God, cries out in despair: “Woe is me! For I am lost; for
+							I am a man of unclean lips, and I dwell in the midst of a people of unclean lips; for my
+							eyes have seen the King, the Lord of hosts!”
+							@components.ScriptureRef("gospel-01", " (Isa. 6:3, 5)", `<strong>Isaiah 6:3, 5</strong> And one called to another and said: “Holy, holy, holy is the Lord of hosts; the whole earth is full of his glory!” ...And I said: “Woe is me! For I am lost; for I am a man of unclean lips, and I dwell in the midst of a people of unclean lips; for my eyes have seen the King, the Lord of hosts!”`, " ")
+						</p>
+						<p>
+							Yet, in God’s perfect holiness—and this is the good news—God has, in His good pleasure,
+							made a way for sinners to be reconciled to Himself through His Son Jesus Christ.
+							@components.ScriptureRef("gospel-02", " John 3:16–17", `<strong>John 3:16–17</strong> “For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life. For God did not send his Son into the world to condemn the world, but in order that the world might be saved through him.”`, " ")
+							says,
+						</p>
+						<blockquote>
+							<p>
+								For God so loved the world, that He gave His only Son, that whoever believes in Him
+								should not perish but have eternal life. For God did not send His Son into the world
+								to condemn the world, but in order that the world might be saved through Him.
+							</p>
+						</blockquote>
+						<p>
+							Jesus Christ lived a righteous life and then died a terrible death on a Roman cross for
+							His people. “All we like sheep have gone astray; we have turned—every one—to his own way;
+							and the Lord has laid on Him the iniquity of us all”
+							@components.ScriptureRef("gospel-03", " (Isa. 53:6)", `<strong>Isaiah 53:6</strong> All we like sheep have gone astray; we have turned—every one—to his own way; and the Lord has laid on him the iniquity of us all.`, ". ")
+							Thus, Jesus Christ satisfied the holy and just requirements of God. God then raised Him from the dead,
+							vindicating Christ’s work.
+						</p>
+						<p>
+							Sinners are called to repent and believe the Gospel and to trust in Christ for salvation.
+							Sinners receive this free gift of salvation from God through faith alone in Jesus Christ
+							alone and are thereby counted righteous before God.
+							@components.ScriptureRef("gospel-04", " Romans 10:9–13", `<strong>Romans 10:9–13</strong>...because, if you confess with your mouth that Jesus is Lord and believe in your heart that God raised him from the dead, you will be saved. For with the heart one believes and is justified, and with the mouth one confesses and is saved. For the Scripture says, “Everyone who believes in him will not be put to shame.” For there is no distinction between Jew and Greek; for the same Lord is Lord of all, bestowing his riches on all who call on him. For “everyone who calls on the name of the Lord will be saved.”`, " ")
+							states,
+						</p>
+						<blockquote>
+							<p>
+								If you confess with your mouth that Jesus is Lord and believe in your heart that God
+								raised Him from the dead, you will be saved. For with the heart one believes and is
+								justified, and with the mouth one confesses and is saved. For the Scripture says,
+								‘Everyone who believes in Him will not be put to shame.’ For there is no distinction
+								between Jew and Greek; for the same Lord is Lord of all, bestowing His riches on all
+								who call on Him. For ‘everyone who calls on the name of the Lord will be saved.’
+							</p>
+						</blockquote>
+						<p>
+							Having been justified, Christians are called to walk as “living sacrifices” unto Him
+							through the Holy Spirit because they are not their own, but were “bought with a price”
+							@components.ScriptureRef("gospel-05", " (Romans 12:1;", `<strong>Romans 12:1</strong> I appeal to you therefore, brothers, by the mercies of God, to present your bodies as a living sacrifice, holy and acceptable to God, which is your spiritual worship.`, " ")
+							@components.ScriptureRef("gospel-06", "1 Cor. 6:20)", `<strong>1 Corinthians 6:20</strong> for you were bought with a price. So glorify God in your body.`, ". ")
+							Just as God raised Jesus Christ, so Christians await a
+							resurrection of their own bodies, Christ being the “first fruits” of the new creation
+							@components.ScriptureRef("gospel-07", " (1 Cor. 15:20)", `<strong>1 Corinthians 15:20</strong> But in fact Christ has been raised from the dead, the firstfruits of those who have fallen asleep.`, ". ")
+							Ultimately, this is their hope—that God has begun His work of “making
+							all things new” in the work of Jesus Christ and in the continued sanctification of His
+							saints
+							@components.ScriptureRef("gospel-08", " (Rev. 21:5)", `<strong>Revelations 21:5</strong> And he who was seated on the throne said, “Behold, I am making all things new.” Also he said, “Write this down, for these words are trustworthy and true.”`, ". ")
+							They await the new heavens and new earth in which there will be no more sin, pain, or sorrow
+							@components.ScriptureRef("gospel-09", " (Rev. 21:4)", `<strong>Revelations 21:4</strong> He will wipe away every tear from their eyes, and death shall be no more, neither shall there be mourning, nor crying, nor pain anymore, for the former things have passed away.”`, ".")
+						</p>
+					</div>
+					<p class="esv-copyright">
+						Scripture quotations are from the ESV&reg; Bible (The Holy Bible, English Standard
+						Version&reg;), copyright &copy; 2001 by Crossway, a publishing ministry of Good News
+						Publishers. Used by permission. All rights reserved.
 					</p>
-					<h2>The Problem: Sin</h2>
-					<p>
-						The Bible teaches that every person is born with a sinful nature,
-						inherited from our first parents, Adam and Eve. We have all fallen
-						short of God's perfect standard of righteousness. Our sin separates us
-						from a holy God and leaves us under His just condemnation. We cannot
-						save ourselves, no matter how hard we try, because the problem lies in
-						our very nature.
-					</p>
-					<h2>The Solution: Christ</h2>
-					<p>
-						But God, being rich in mercy, did not leave us in our sin. He sent His
-						only Son, Jesus Christ, to live the perfect life that we could never
-						live and to die the death that we deserved. On the cross, Jesus bore
-						the full weight of God's wrath against sin, satisfying divine justice
-						on behalf of all who would believe in Him. Three days later, He rose
-						from the dead, conquering sin, death, and the devil.
-					</p>
-					<h2>The Response: Faith and Repentance</h2>
-					<p>
-						God commands all people everywhere to repent of their sins and believe
-						in the Lord Jesus Christ. To repent means to turn away from sin and
-						turn toward God. To believe means to trust in Christ alone for salvation,
-						resting on His finished work rather than on our own efforts. This faith
-						is itself a gift of God's grace, worked in our hearts by the Holy Spirit.
-					</p>
-					<h2>The Promise: Eternal Life</h2>
-					<p>
-						All who trust in Christ are forgiven of their sins, adopted into God's
-						family, and given the gift of eternal life. They are united to Christ
-						by faith, indwelt by the Holy Spirit, and will be raised in glory on
-						the last day. This is not something we earn — it is the free gift of
-						God's grace.
-					</p>
-					<h2>Come and Hear</h2>
-					<p>
-						If you would like to learn more about the gospel or have questions about
-						the Christian faith, we warmly invite you to visit Saint Andrew's Chapel.
-						Our pastors would be glad to meet with you and open God's Word together.
-						You are always welcome.
-					</p>
-				</div>
+				}
 			</div>
 		</section>
 	}

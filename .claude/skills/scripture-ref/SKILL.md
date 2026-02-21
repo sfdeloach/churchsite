@@ -42,12 +42,12 @@ For full-chapter references (e.g., `John 11`, `Acts 6`), select 1-4 key represen
 The `verseText` parameter accepts HTML rendered via Alpine.js `x-html`. Each tooltip contains a single reference with a `<strong>` header followed by the verse text:
 
 ```
-<strong>Romans 5:18&ndash;19</strong>Therefore, as one trespass led to condemnation for all men, so one act of righteousness leads to justification and life for all men. For as by the one man&rsquo;s disobedience the many were made sinners, so by the one man&rsquo;s obedience the many will be made righteous.
+<strong>Romans 5:18–19</strong>Therefore, as one trespass led to condemnation for all men, so one act of righteousness leads to justification and life for all men. For as by the one man’s disobedience the many were made sinners, so by the one man’s obedience the many will be made righteous.
 ```
 
 **Escaping rules** (the text passes through Templ attribute escaping → JS getAttribute → x-html):
-- Use `&ldquo;` and `&rdquo;` for double quotes within verse text
-- Use `&rsquo;` for apostrophes/single quotes within verse text
+- Use `“` and `”` for double quotes within verse text
+- Use `’` for apostrophes/single quotes within verse text
 - `<strong>`, `<em>` HTML tags work as-is (Templ escapes them in the attribute, browser decodes them, Alpine renders them)
 
 ### 4. Wrap Content in ScriptureScope
@@ -79,7 +79,7 @@ Before:
 After:
 ```
 ...the believer&nbsp;
-@components.ScriptureRef("unique-id", "(Rom. 5:18-19)", `<strong>Romans 5:18&ndash;19</strong>verse text...`, ". ")
+@components.ScriptureRef("unique-id", "(Rom. 5:18-19)", `<strong>Romans 5:18–19</strong>verse text...`, ". ")
 The sole ground...
 ```
 
@@ -96,7 +96,7 @@ After:
 @components.ScriptureRef("marks-church-tim", "(1 Tim. 3:15;", `<strong>1 Timothy 3:15</strong>verse text...`, " ")
 @components.ScriptureRef("marks-church-matt-16", "Matt. 16:19;", `<strong>Matthew 16:19</strong>verse text...`, " ")
 @components.ScriptureRef("marks-church-matt-28", "Matt. 28:19;", `<strong>Matthew 28:19</strong>verse text...`, " ")
-@components.ScriptureRef("marks-church-cor", "1 Cor. 11:24–26)", `<strong>1 Corinthians 11:24&ndash;26</strong>verse text...`, ".")
+@components.ScriptureRef("marks-church-cor", "1 Cor. 11:24–26)", `<strong>1 Corinthians 11:24–26</strong>verse text...`, ".")
 ```
 
 **Inline citation** — use plain `ref` without parentheses:
@@ -108,7 +108,7 @@ Before:
 
 After:
 ```
-...the &ldquo;four creatures&rdquo; in&nbsp;
+...the “four creatures” in&nbsp;
 @components.ScriptureRef("four-creatures", "Ezekiel 1:5–10", `...`, ", ")
 @components.ScriptureRef("four-creatures-faces", "Ezekiel 10:14", `...`, ", ")
 and&nbsp;
@@ -159,7 +159,7 @@ Use descriptive kebab-case IDs that relate to the theological topic:
 @components.ScriptureRef("baptism-circumcision", "(Col. 2:11-12)", `<strong>Colossians 2:11-12</strong>In him also you were circumcised with a circumcision made without hands...`, ", ")
 
 // Inline — no parentheses in ref
-@components.ScriptureRef("four-creatures", "Ezekiel 1:5–10", `<strong>Ezekiel 1:5&ndash;10</strong>And from the midst of it came the likeness...`, ", ")
+@components.ScriptureRef("four-creatures", "Ezekiel 1:5–10", `<strong>Ezekiel 1:5–10</strong>And from the midst of it came the likeness...`, ", ")
 ```
 
 ## Existing Implementations
