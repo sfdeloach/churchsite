@@ -92,7 +92,8 @@ Temporary preview environment for stakeholder review. See [DEPLOYMENT.md](DEPLOY
 - `GET /about/sanctuary` — sanctuary, fellowship hall, grounds
 
 **Templates:**
-- Components: `page_header.templ` (reusable banner), `staff_card.templ` (photo placeholder + info)
+- Components: `page_header.templ` (reusable banner), `staff_card.templ` (photo placeholder + info), `scripture_ref.templ` (Alpine.js interactive scripture citation with floating tooltip — used in beliefs, worship, gospel, sanctuary pages)
+- Icons: `templates/icons/arch.templ` — SVG arch icon used in nav, footer, and homepage hero
 - Pages: 6 about page templates in `templates/pages/about_*.templ`
 - Nav updated: "About" link replaced with Alpine.js dropdown submenu (6 sub-links)
 
