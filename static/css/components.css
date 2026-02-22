@@ -644,11 +644,14 @@
   border: 1px solid var(--color-gray-200);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: box-shadow var(--transition-base);
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
 }
 
 .ministry-card:hover {
   box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
 
 .ministry-card__body {
@@ -675,6 +678,11 @@
   color: var(--color-gray-600);
   line-height: 1.6;
   margin-bottom: var(--space-md);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .ministry-card__meta {
@@ -710,6 +718,8 @@
 }
 
 .ministry-card__link {
+  display: inline-block;
+  padding: var(--space-sm) 0;
   font-size: var(--font-size-sm);
   font-weight: 600;
   color: var(--color-primary);
@@ -720,6 +730,15 @@
   color: var(--color-primary-light);
   text-decoration: underline;
 }
+
+.ministry-card__name a:focus-visible,
+.ministry-card__link:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* .ministry-content is available for ministry-specific content overrides if needed */
 
 /* Ministry detail page */
 .ministry-detail {
