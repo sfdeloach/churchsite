@@ -1,0 +1,26 @@
+package pages
+
+import (
+	"github.com/sfdeloach/churchsite/internal/models"
+	"github.com/sfdeloach/churchsite/templates/components"
+	"github.com/sfdeloach/churchsite/templates/layouts"
+)
+
+templ MinistriesIndex(ministries []models.Ministry) {
+	@layouts.Base("Ministries") {
+		@components.PageHeader("Ministries", "Serving Together for God's Glory")
+		<section class="ministries-content">
+			<div class="container">
+				if len(ministries) > 0 {
+					<div class="ministry-grid">
+						for _, ministry := range ministries {
+							@components.MinistryCard(ministry)
+						}
+					</div>
+				} else {
+					<p class="text-center text-muted">No ministries are currently listed. Please check back soon.</p>
+				}
+			</div>
+		</section>
+	}
+}

@@ -91,4 +91,14 @@
         border-bottom: none;
         cursor: default;
     }
+
+    .ministry-card {
+        break-inside: avoid;
+        box-shadow: none;
+    }
+
+    .ministry-detail__meta {
+        background: none;
+        border: 1px solid #ccc;
+    }
 }

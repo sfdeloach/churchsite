@@ -62,11 +62,13 @@ func main() {
 	// Initialize services
 	eventSvc := services.NewEventService(db.Postgres)
 	staffMemberSvc := services.NewStaffMemberService(db.Postgres)
+	ministrySvc := services.NewMinistryService(db.Postgres)
 
 	// Initialize handlers
 	healthHandler := handlers.NewHealthHandler(db)
 	homeHandler := handlers.NewHomeHandler(eventSvc)
 	aboutHandler := handlers.NewAboutHandler(staffMemberSvc)
+	ministryHandler := handlers.NewMinistryHandler(ministrySvc)
 
 	// Build router
 	r := chi.NewRouter()
@@ -95,6 +97,8 @@ func main() {
 	r.Get("/about/gospel", aboutHandler.Gospel)
 	r.Get("/about/staff", aboutHandler.Staff)
 	r.Get("/about/sanctuary", aboutHandler.Sanctuary)
+	r.Get("/ministries", ministryHandler.Index)
+	r.Get("/ministries/{slug}", ministryHandler.Show)
 
 	// Start server
 	addr := fmt.Sprintf(":%s", cfg.AppPort)

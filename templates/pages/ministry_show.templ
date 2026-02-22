@@ -1,0 +1,48 @@
+package pages
+
+import (
+	"github.com/sfdeloach/churchsite/internal/models"
+	"github.com/sfdeloach/churchsite/templates/components"
+	"github.com/sfdeloach/churchsite/templates/layouts"
+)
+
+templ MinistryShow(ministry models.Ministry) {
+	@layouts.Base(ministry.Name) {
+		@components.PageHeader(ministry.Name, ministry.Description)
+		<section class="ministry-detail">
+			<div class="container">
+				if ministry.MeetingTime != "" || ministry.Location != "" || ministry.ContactEmail != "" {
+					<div class="ministry-detail__meta">
+						if ministry.MeetingTime != "" {
+							<div class="ministry-detail__meta-item">
+								<span class="ministry-detail__meta-label">When</span>
+								<span>{ ministry.MeetingTime }</span>
+							</div>
+						}
+						if ministry.Location != "" {
+							<div class="ministry-detail__meta-item">
+								<span class="ministry-detail__meta-label">Where</span>
+								<span>{ ministry.Location }</span>
+							</div>
+						}
+						if ministry.ContactEmail != "" {
+							<div class="ministry-detail__meta-item">
+								<span class="ministry-detail__meta-label">Contact</span>
+								<a href={ templ.SafeURL("mailto:" + ministry.ContactEmail) }>{ ministry.ContactEmail }</a>
+							</div>
+						}
+					</div>
+				}
+				if ministry.PageContent != "" {
+					// NOTE: PageContent must be sanitized with bluemonday in Step 7 before user-edited content reaches this template.
+					<div class="ministry-content content-section">
+						@templ.Raw(ministry.PageContent)
+					</div>
+				}
+				<div class="mt-2xl">
+					<a href="/ministries" class="btn btn--outline">← All Ministries</a>
+				</div>
+			</div>
+		</section>
+	}
+}

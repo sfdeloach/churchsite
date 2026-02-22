@@ -104,7 +104,37 @@ Temporary preview environment for stakeholder review. See [DEPLOYMENT.md](DEPLOY
 
 **Seed data** updated in `cmd/seed/main.go` to include 5 staff members
 
-### Step 3: Ministry Pages — NOT STARTED
+### Step 3: Ministry Pages — COMPLETE
+
+**Database:**
+- `ministries` table (soft-delete) with `name`, `slug`, `description`, `leader_id`, `contact_email`, `meeting_time`, `location`, `is_active`, `sort_order`, `page_content`
+- Migrations: `20250101000008` (create table with indexes on slug, is_active, sort_order, deleted_at), `20250101000009` (seed 6 ministries)
+
+**Backend:**
+- Model: `Ministry` (`internal/models/ministry.go`) — soft-delete, embeds `gorm.Model`, `LeaderID *uint` nullable with no FK (users table deferred to Step 7)
+- Service: `MinistryService.GetActive()`, `MinistryService.GetBySlug(slug)` (`internal/services/ministry.go`)
+- Handler: `MinistryHandler` (`internal/handlers/ministry.go`) — `Index` renders overview, `Show` fetches by slug with 404 on `gorm.ErrRecordNotFound`
+
+**Routes:**
+- `GET /ministries` — ministry overview grid
+- `GET /ministries/{slug}` — individual ministry detail page
+
+**Templates:**
+- Components: `ministry_card.templ` (card with name, description, meeting time, location, "Learn more" link)
+- Pages: `ministry_index.templ` (grid overview), `ministry_show.templ` (detail with meta block + raw page content + back link)
+- `@templ.Raw(ministry.PageContent)` used for rich content — security comment added noting bluemonday sanitization required in Step 7
+
+**CSS:**
+- `components.css` — ministries-content, ministry-grid, ministry-card (BEM), ministry-detail, ministry-detail__meta styles
+- `print.css` — ministry-card break-inside: avoid, ministry-detail__meta border override
+
+**Seed data** updated in `cmd/seed/main.go` to include 6 ministries (FirstOrCreate to handle UNIQUE slug constraint on re-runs)
+
+**Deferred to Steps 7–10:**
+- `ministry_assignments` table (links users to ministries for editing rights)
+- `/staff/ministry/{slug}` edit route
+- Quill WYSIWYG editor for `page_content`
+- `bluemonday` HTML sanitization before rendering user-edited `page_content`
 
 ### Step 4: Events Calendar with CRUD — NOT STARTED
 

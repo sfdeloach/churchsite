@@ -1,0 +1,35 @@
+package components
+
+import "github.com/sfdeloach/churchsite/internal/models"
+
+templ MinistryCard(ministry models.Ministry) {
+	<article class="ministry-card">
+		<div class="ministry-card__body">
+			<h3 class="ministry-card__name">
+				<a href={ templ.SafeURL("/ministries/" + ministry.Slug) }>{ ministry.Name }</a>
+			</h3>
+			if ministry.Description != "" {
+				<p class="ministry-card__description">{ ministry.Description }</p>
+			}
+			if ministry.MeetingTime != "" || ministry.Location != "" {
+				<dl class="ministry-card__meta">
+					if ministry.MeetingTime != "" {
+						<div class="ministry-card__meta-row">
+							<dt>When</dt>
+							<dd>{ ministry.MeetingTime }</dd>
+						</div>
+					}
+					if ministry.Location != "" {
+						<div class="ministry-card__meta-row">
+							<dt>Where</dt>
+							<dd>{ ministry.Location }</dd>
+						</div>
+					}
+				</dl>
+			}
+		</div>
+		<div class="ministry-card__footer">
+			<a href={ templ.SafeURL("/ministries/" + ministry.Slug) } class="ministry-card__link">Learn more →</a>
+		</div>
+	</article>
+}

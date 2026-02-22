@@ -131,7 +131,86 @@ func main() {
 		slog.Info("seeded staff member", "name", member.Name, "title", member.Title)
 	}
 
-	slog.Info("seeding complete", "events", len(events), "staff_members", len(staffMembers))
+	// Seed ministries (use FirstOrCreate because slug has UNIQUE constraint)
+	ministries := []models.Ministry{
+		{
+			Name:         "Sunday School",
+			Slug:         "sunday-school",
+			Description:  "Biblical instruction for all ages, grounding our congregation in the Reformed faith every Lord's Day morning.",
+			ContactEmail: "sundayschool@sachapel.com",
+			MeetingTime:  "Sundays, 9:15 AM",
+			Location:     "Education Wing",
+			IsActive:     true,
+			SortOrder:    1,
+			PageContent:  "<h2>Rooted in the Word</h2><p>Sunday School at Saint Andrew's Chapel is a cornerstone of our educational ministry. Each Sunday morning at 9:15 AM, our congregation gathers by age group to study the Word together.</p>",
+		},
+		{
+			Name:         "Women's Ministry",
+			Slug:         "womens-ministry",
+			Description:  "Encouraging women to grow in grace through Bible study, fellowship, and service to the body of Christ.",
+			ContactEmail: "women@sachapel.com",
+			MeetingTime:  "Tuesdays, 10:00 AM",
+			Location:     "Room 204",
+			IsActive:     true,
+			SortOrder:    2,
+			PageContent:  "<h2>Women Growing Together in Grace</h2><p>The Women's Ministry exists to encourage and equip women to know Christ more deeply, love one another more faithfully, and serve the body of Christ more joyfully.</p>",
+		},
+		{
+			Name:         "Youth Ministry",
+			Slug:         "youth-ministry",
+			Description:  "Discipling students in grades 6–12 in the truth of God's Word and the fellowship of the Reformed faith.",
+			ContactEmail: "youth@sachapel.com",
+			MeetingTime:  "Sundays, 5:00 PM",
+			Location:     "Youth Room",
+			IsActive:     true,
+			SortOrder:    3,
+			PageContent:  "<h2>Raising Up the Next Generation</h2><p>The Youth Ministry is committed to the discipleship of students in grades 6 through 12, rooting them in the truth of God's Word and the community of the covenant people.</p>",
+		},
+		{
+			Name:         "Music Ministry",
+			Slug:         "music-ministry",
+			Description:  "Offering excellence in sacred music to the glory of God through psalmody, hymnody, and choral worship.",
+			ContactEmail: "music@sachapel.com",
+			MeetingTime:  "Thursdays, 7:00 PM (Choir rehearsal)",
+			Location:     "Sanctuary",
+			IsActive:     true,
+			SortOrder:    4,
+			PageContent:  "<h2>Singing to the Glory of God</h2><p>The Music Ministry understands corporate song as an act of worship, rooted in the historic Reformed tradition's high view of congregational singing.</p>",
+		},
+		{
+			Name:         "Mercy Ministry",
+			Slug:         "mercy-ministry",
+			Description:  "Serving those in need within our congregation and community, reflecting the compassion of Christ.",
+			ContactEmail: "mercy@sachapel.com",
+			MeetingTime:  "As needs arise",
+			Location:     "Various locations",
+			IsActive:     true,
+			SortOrder:    5,
+			PageContent:  "<h2>The Ministry of Mercy</h2><p>The Mercy Ministry is grounded in the conviction that the church is called not only to proclaim the gospel in word but to embody it in deed.</p>",
+		},
+		{
+			Name:         "Men's Fellowship",
+			Slug:         "mens-fellowship",
+			Description:  "Building men of God through prayer, accountability, Scripture study, and sacrificial service.",
+			ContactEmail: "men@sachapel.com",
+			MeetingTime:  "Second Saturday of each month, 8:00 AM",
+			Location:     "Fellowship Hall",
+			IsActive:     true,
+			SortOrder:    6,
+			PageContent:  "<h2>Iron Sharpening Iron</h2><p>The Men's Fellowship exists to build men who are rooted in Christ, committed to their families, faithful to the church, and engaged in the world for the glory of God.</p>",
+		},
+	}
+
+	for _, ministry := range ministries {
+		result := db.Postgres.Where(models.Ministry{Slug: ministry.Slug}).FirstOrCreate(&ministry)
+		if result.Error != nil {
+			slog.Error("failed to seed ministry", "slug", ministry.Slug, "error", result.Error)
+			continue
+		}
+		slog.Info("seeded ministry", "name", ministry.Name, "slug", ministry.Slug)
+	}
+
+	slog.Info("seeding complete", "events", len(events), "staff_members", len(staffMembers), "ministries", len(ministries))
 }
 
 func nextSunday(from time.Time) time.Time {
